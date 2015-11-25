@@ -1,10 +1,10 @@
-package com.github.dirkraft.trekker.model;
+package com.github.dirkraft.trekker.model.jpa;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-@Entity
+@Entity(name = "Human")
 @DiscriminatorValue("human")
-public class Human extends Actor {
+public class HumanJpa extends ActorJpa {
 
 }

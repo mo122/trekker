@@ -1,67 +1,19 @@
 package com.github.dirkraft.trekker.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OrderColumn;
-import javax.persistence.Table;
+public interface TrekStop extends Identifiable {
+  Trek getTrek();
 
-@Entity
-@Table
-public class TrekStop implements Identifiable {
+  void setTrek(Trek trek);
 
-  Long id;
-  Trek trek;
-  String name;
-  Byte seq;
-  Boolean weight;
+  String getName();
 
-  @Id
-  @Override
-  public Long getId() {
-    return id;
-  }
+  void setName(String name);
 
-  @Override
-  public void setId(Long id) {
-    this.id = id;
-  }
+  Byte getSeq();
 
-  @ManyToOne(targetEntity = Trek.class, optional = false)
-  public Trek getTrek() {
-    return trek;
-  }
+  void setSeq(Byte seq);
 
-  public void setTrek(Trek trek) {
-    this.trek = trek;
-  }
+  Boolean getWeight();
 
-  @Column(nullable = false)
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  @Column
-  @OrderColumn(nullable = false)
-  public Byte getSeq() {
-    return seq;
-  }
-
-  public void setSeq(Byte seq) {
-    this.seq = seq;
-  }
-
-  @Column(nullable = false)
-  public Boolean getWeight() {
-    return weight;
-  }
-
-  public void setWeight(Boolean weight) {
-    this.weight = weight;
-  }
+  void setWeight(Boolean weight);
 }

@@ -1,70 +1,21 @@
 package com.github.dirkraft.trekker.model;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import java.util.Set;
 
-@Entity
-@Table
-public class Task implements Identifiable {
+public interface Task extends Identifiable {
+  String getTitle();
 
-  Long id;
-  String title;
-  String description;
-  Trek trek;
-  Set<Flag> flags;
+  void setTitle(String title);
 
-  @Id
-  @Override
-  public Long getId() {
-    return id;
-  }
+  String getDescription();
 
-  @Override
-  public void setId(Long id) {
-    this.id = id;
-  }
+  void setDescription(String description);
 
-  @Column(nullable = false)
-  public String getTitle() {
-    return title;
-  }
+  Trek getTrek();
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
+  void setTrek(Trek trek);
 
-  @Column
-  public String getDescription() {
-    return description;
-  }
+  Set<Flag> getFlags();
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  @ManyToOne(targetEntity = Trek.class, optional = false)
-  public Trek getTrek() {
-    return trek;
-  }
-
-  public void setTrek(Trek trek) {
-    this.trek = trek;
-  }
-
-  @ElementCollection(targetClass = Flag.class, fetch = FetchType.EAGER)
-  @CollectionTable(name = "task_flag")
-  public Set<Flag> getFlags() {
-    return flags;
-  }
-
-  public void setFlags(Set<Flag> flags) {
-    this.flags = flags;
-  }
+  void setFlags(Set<Flag> flags);
 }

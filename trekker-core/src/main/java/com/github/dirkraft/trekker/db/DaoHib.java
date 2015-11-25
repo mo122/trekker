@@ -7,18 +7,18 @@ import org.hibernate.Transaction;
 
 import java.util.Optional;
 
-public class GenericDao<E extends Identifiable> implements Dao<E> {
+public class DaoHib<E extends Identifiable> implements Dao<E> {
 
   Class<E> entityClass;
   SessionFactory sessionFactory;
 
   @SuppressWarnings("unchecked")
-  public GenericDao(Class<E> entityClass, SessionFactory sessionFactory) {
+  public DaoHib(Class<E> entityClass, SessionFactory sessionFactory) {
     this.entityClass = entityClass;
     this.sessionFactory = sessionFactory;
   }
 
-  public GenericDao(Class<E> entityClass) {
+  public DaoHib(Class<E> entityClass) {
     this(entityClass, SessionFactories.getInstance());
   }
 

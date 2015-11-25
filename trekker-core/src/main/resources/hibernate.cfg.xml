@@ -8,14 +8,14 @@
         <property name="connection.url">jdbc:postgresql://localhost/trekker</property>
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="com.github.dirkraft.trekker.model.Trek"/>
-        <mapping class="com.github.dirkraft.trekker.model.TrekStop"/>
-        <mapping class="com.github.dirkraft.trekker.model.Flag"/>
-        <mapping class="com.github.dirkraft.trekker.model.Priority"/>
-        <mapping class="com.github.dirkraft.trekker.model.AuditLog"/>
-        <mapping class="com.github.dirkraft.trekker.model.Human"/>
-        <mapping class="com.github.dirkraft.trekker.model.Ghost"/>
-        <mapping class="com.github.dirkraft.trekker.model.Task"/>
+        <mapping class="com.github.dirkraft.trekker.model.jpa.AuditLogJpa"/>
+        <mapping class="com.github.dirkraft.trekker.model.jpa.FlagJpa"/>
+        <mapping class="com.github.dirkraft.trekker.model.jpa.GhostJpa"/>
+        <mapping class="com.github.dirkraft.trekker.model.jpa.HumanJpa"/>
+        <mapping class="com.github.dirkraft.trekker.model.jpa.PriorityJpa"/>
+        <mapping class="com.github.dirkraft.trekker.model.jpa.TaskJpa"/>
+        <mapping class="com.github.dirkraft.trekker.model.jpa.TrekJpa"/>
+        <mapping class="com.github.dirkraft.trekker.model.jpa.TrekStopJpa"/>
 
     </session-factory>
 </hibernate-configuration>
