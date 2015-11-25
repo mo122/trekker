@@ -1,5 +1,6 @@
 package com.github.dirkraft.trekker.db;
 
+import com.github.dirkraft.trekker.model.Identifiable;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

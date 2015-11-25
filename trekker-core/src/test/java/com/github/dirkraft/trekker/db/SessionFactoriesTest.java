@@ -2,11 +2,11 @@ package com.github.dirkraft.trekker.db;
 
 import org.junit.Test;
 
-public class GenericDaoTest {
+public class SessionFactoriesTest {
 
   @Test
   public void test() {
-    new GenericDao<>(Trek.class).get(1L);
+    SessionFactories.getInstance();
   }
 
 }

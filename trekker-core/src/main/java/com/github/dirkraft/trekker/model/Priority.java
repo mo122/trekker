@@ -1,4 +1,4 @@
-package com.github.dirkraft.trekker.db;
+package com.github.dirkraft.trekker.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,8 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "trek")
-public class Trek implements Identifiable {
+@Table
+public class Priority implements Identifiable {
 
   Long id;
   String name;
@@ -23,7 +23,7 @@ public class Trek implements Identifiable {
     this.id = id;
   }
 
-  @Column
+  @Column(nullable = false)
   public String getName() {
     return name;
   }
