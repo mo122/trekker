@@ -5,9 +5,8 @@ Auth.$inject = ['Assert', 'Error', 'localStorageService', '$http', '$state'];
 function Auth(Assert, Error, localStorageService, $http, $state) {
   var Auth = this;
 
-  Auth.ghClientId = 'e2ac323921a88812d17a';
-  Auth.ghAccessToken = null;
   Auth.trekkerAuthServer = 'http://localhost:4567';
+  Auth.ghAccessToken = localStorageService.get('auth.ghAccessToken');
 
   Auth.isAuthd = isAuthd;
   Auth.startAuthFlow = startAuthFlow;
@@ -84,6 +83,7 @@ function Auth(Assert, Error, localStorageService, $http, $state) {
   function receiveAccessToken(ghAccessToken) {
     console.info('Retrieved fresh access token!');
     Auth.ghAccessToken = ghAccessToken;
+    localStorageService.set('auth.ghAccessToken', ghAccessToken);
   }
 
 }

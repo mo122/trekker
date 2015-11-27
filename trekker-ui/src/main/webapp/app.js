@@ -6,7 +6,8 @@ Trekker = angular.module('Trekker', ['ngMaterial', 'ui.router', 'LocalStorageMod
 TrekkerRouteCfg.$inject = ['$urlRouterProvider', '$stateProvider'];
 function TrekkerRouteCfg($urlRouterProvider, $stateProvider) {
   $urlRouterProvider
-      .when('', '/auth');
+      .when('', '/home')
+      .otherwise('/home');
   //.otherwise('');
   $stateProvider
       .state('auth', {
@@ -33,6 +34,15 @@ function TrekkerRouteCfg($urlRouterProvider, $stateProvider) {
             controller: 'AuthFinishCtrl'
           }
         }
+      })
+      .state('home', {
+        url: '/home',
+        views: {
+          top: {
+            controller: 'HomeTopCtrl as ctrl',
+            templateUrl: 'home.top.view.html'
+          }
+        }
       });
 }
 
@@ -45,7 +55,8 @@ TrekkerRun.$inject = ['Auth', 'Assert', '$state', '$rootScope'];
 function TrekkerRun(Auth, Assert, $state, $rootScope) {
   $rootScope.$on('$stateChangeStart', function (evt, to, params) {
     console.debug('Routing to', to);
-    if (!to.name.match(/^auth(\\..+)?$/) && !Auth.isAuthd()) {
+    if (!to.name.match(/^auth.*$/) && !Auth.isAuthd()) {
+      evt.preventDefault();
       $state.go('auth');
     }
 
