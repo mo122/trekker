@@ -15,6 +15,10 @@ public interface Task extends Identifiable {
 
   void setTrek(Trek trek);
 
+  TrekStop getTrekStop();
+
+  void setTrekStop(TrekStop trekStop);
+
   Set<Flag> getFlags();
 
   void setFlags(Set<Flag> flags);

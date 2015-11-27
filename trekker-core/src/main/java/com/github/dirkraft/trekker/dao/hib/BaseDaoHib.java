@@ -1,5 +1,6 @@
-package com.github.dirkraft.trekker.db;
+package com.github.dirkraft.trekker.dao.hib;
 
+import com.github.dirkraft.trekker.dao.Dao;
 import com.github.dirkraft.trekker.model.Identifiable;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,18 +8,18 @@ import org.hibernate.Transaction;
 
 import java.util.Optional;
 
-public class DaoHib<E extends Identifiable> implements Dao<E> {
+public class BaseDaoHib<E extends Identifiable> implements Dao<E> {
 
   Class<E> entityClass;
   SessionFactory sessionFactory;
 
   @SuppressWarnings("unchecked")
-  public DaoHib(Class<E> entityClass, SessionFactory sessionFactory) {
+  public BaseDaoHib(Class<E> entityClass, SessionFactory sessionFactory) {
     this.entityClass = entityClass;
     this.sessionFactory = sessionFactory;
   }
 
-  public DaoHib(Class<E> entityClass) {
+  public BaseDaoHib(Class<E> entityClass) {
     this(entityClass, SessionFactories.getInstance());
   }
 

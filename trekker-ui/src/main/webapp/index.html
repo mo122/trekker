@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="Trekker">
+<head>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- utility (ABC) -->
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/sprintf/src/sprintf.js"></script>
+  <script src="bower_components/urijs/src/URI.js"></script>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <!-- angular mash (ABC) -->
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/sprintf/src/angular-sprintf.js"></script>
+
+</head>
+<body>
+
+<ui-view name="top"></ui-view>
+
+
+<!-- angular mash -->
+<script src="app.js"></script>
+<!-- controllers (ABC) -->
+<script src="auth.continue.controller.js"></script>
+<script src="auth.finish.controller.js"></script>
+<script src="auth.top.controller.js"></script>
+<script src="root.controller.js"></script>
+<!-- services (ABC) -->
+<script src="assert.service.js"></script>
+<script src="auth.service.js"></script>
+<script src="error.service.js"></script>
+
+</body>
+</html>

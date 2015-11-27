@@ -1,15 +1,17 @@
 package com.github.dirkraft.trekker.model.jpa;
 
 import com.github.dirkraft.trekker.model.Flag;
+import com.github.dirkraft.trekker.model.Priority;
 import com.github.dirkraft.trekker.model.Task;
 import com.github.dirkraft.trekker.model.Trek;
+import com.github.dirkraft.trekker.model.TrekStop;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.Set;
@@ -22,7 +24,9 @@ public class TaskJpa implements Task {
   String title;
   String description;
   Trek trek;
+  TrekStop trekStop;
   Set<Flag> flags;
+  Priority priority;
 
   @Id
   @Override
@@ -69,8 +73,19 @@ public class TaskJpa implements Task {
   }
 
   @Override
-  @ElementCollection(targetClass = FlagJpa.class, fetch = FetchType.EAGER)
-  @CollectionTable(name = "task_flag")
+  @ManyToOne(targetEntity = TrekStopJpa.class, optional = false)
+  public TrekStop getTrekStop() {
+    return trekStop;
+  }
+
+  @Override
+  public void setTrekStop(TrekStop trekStop) {
+    this.trekStop = trekStop;
+  }
+
+  @Override
+  @ManyToMany(targetEntity = FlagJpa.class, fetch = FetchType.EAGER)
+  @JoinTable(name = "task_flag")
   public Set<Flag> getFlags() {
     return flags;
   }
@@ -78,5 +93,14 @@ public class TaskJpa implements Task {
   @Override
   public void setFlags(Set<Flag> flags) {
     this.flags = flags;
+  }
+
+  @ManyToOne(targetEntity = PriorityJpa.class)
+  public Priority getPriority() {
+    return priority;
+  }
+
+  public void setPriority(Priority priority) {
+    this.priority = priority;
   }
 }

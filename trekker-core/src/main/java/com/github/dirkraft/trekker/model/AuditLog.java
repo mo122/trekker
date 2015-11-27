@@ -20,7 +20,7 @@ public interface AuditLog extends Identifiable {
 
   void setActor(Actor actor);
 
-  String getDesc();
+  String getDescription();
 
-  void setDesc(String desc);
+  void setDescription(String description);
 }

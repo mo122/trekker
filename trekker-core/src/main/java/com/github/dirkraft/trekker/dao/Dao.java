@@ -1,4 +1,4 @@
-package com.github.dirkraft.trekker.db;
+package com.github.dirkraft.trekker.dao;
 
 import com.github.dirkraft.trekker.model.Identifiable;
 

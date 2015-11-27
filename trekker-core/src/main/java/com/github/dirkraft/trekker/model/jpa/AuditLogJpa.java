@@ -20,7 +20,7 @@ public class AuditLogJpa implements AuditLog {
   String attrs;
   DateTime time;
   Actor actor;
-  String desc;
+  String description;
 
   @Id
   @Override
@@ -80,12 +80,12 @@ public class AuditLogJpa implements AuditLog {
 
   @Override
   @Column(nullable = false)
-  public String getDesc() {
-    return desc;
+  public String getDescription() {
+    return description;
   }
 
   @Override
-  public void setDesc(String desc) {
-    this.desc = desc;
+  public void setDescription(String description) {
+    this.description = description;
   }
 }

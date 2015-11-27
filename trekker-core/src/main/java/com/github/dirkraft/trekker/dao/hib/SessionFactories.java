@@ -1,4 +1,4 @@
-package com.github.dirkraft.trekker.db;
+package com.github.dirkraft.trekker.dao.hib;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
