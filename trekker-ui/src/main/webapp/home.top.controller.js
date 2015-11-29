@@ -1,9 +1,9 @@
 Trekker.controller('HomeTopCtrl', HomeTopCtrl);
 
-HomeTopCtrl.$inject = [];
+HomeTopCtrl.$inject = ['Tasks'];
 
-function HomeTopCtrl() {
+function HomeTopCtrl(Task) {
   var vm = this;
 
-
+  vm.tasks = Task.list();
 }

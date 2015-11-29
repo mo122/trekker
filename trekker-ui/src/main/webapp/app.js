@@ -1,4 +1,5 @@
-Trekker = angular.module('Trekker', ['ngMaterial', 'ui.router', 'LocalStorageModule', 'sprintf'])
+Trekker = angular.module('Trekker', ['ngResource', 'ngMaterial', 'ui.router', 'LocalStorageModule', 'sprintf',
+      'com.github.dirkraft.JsLocalCache'])
     .config(TrekkerRouteCfg)
     .config(TrekkerStorageCfg)
     .run(TrekkerRun);
@@ -43,16 +44,32 @@ function TrekkerRouteCfg($urlRouterProvider, $stateProvider) {
             templateUrl: 'home.top.view.html'
           }
         }
+      })
+      .state('settings', {
+        url: '/settings',
+        views: {
+          top: {
+            controller: 'SettingsTopCtrl as ctrl',
+            templateUrl: 'settings.top.view.html'
+          }
+        }
       });
 }
 
-TrekkerStorageCfg.$inject = ['localStorageServiceProvider'];
-function TrekkerStorageCfg(localStorageServiceProvider) {
+TrekkerStorageCfg.$inject = ['localStorageServiceProvider', '$sceDelegateProvider'];
+function TrekkerStorageCfg(localStorageServiceProvider, $sceDelegateProvider) {
   localStorageServiceProvider.setPrefix('trekker');
+  $sceDelegateProvider.resourceUrlWhitelist([
+    // Allow same origin resource loads.
+    'self',
+    // Allow loading from our assets domain.  Notice the difference between * and **.
+    'https://avatars.githubusercontent.com/u/**'
+  ]);
 }
 
-TrekkerRun.$inject = ['Auth', 'Assert', '$state', '$rootScope'];
-function TrekkerRun(Auth, Assert, $state, $rootScope) {
+TrekkerRun.$inject = ['Auth', 'LocalCache', 'Settings', '$state', '$rootScope'];
+function TrekkerRun(Auth, LocalCache, Settings, $state, $rootScope) {
+
   $rootScope.$on('$stateChangeStart', function (evt, to, params) {
     console.debug('Routing to', to);
     if (!to.name.match(/^auth.*$/) && !Auth.isAuthd()) {

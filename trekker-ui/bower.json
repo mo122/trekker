@@ -23,6 +23,7 @@
     "angular-local-storage": "~0.2.3",
     "urijs": "uri.js#~1.17.0",
     "moment": "~2.10.6",
-    "sprintf": "~1.0.3"
+    "sprintf": "~1.0.3",
+    "angular-resource": "~1.4.8"
   }
 }

@@ -3,7 +3,7 @@
 <head>
   <link rel="stylesheet" href="styles.css">
 
-  <!-- utility (ABC) -->
+  <!-- 3rd party utility (ABC) -->
   <script src="bower_components/moment/moment.js"></script>
   <script src="bower_components/sprintf/src/sprintf.js"></script>
   <script src="bower_components/urijs/src/URI.js"></script>
@@ -14,8 +14,12 @@
   <script src="bower_components/angular-aria/angular-aria.js"></script>
   <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
   <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/sprintf/src/angular-sprintf.js"></script>
+
+  <!-- utility (ABC) -->
+  <script src="cache.module.js"></script>
 
 </head>
 <body>
@@ -31,10 +35,15 @@
 <script src="auth.top.controller.js"></script>
 <script src="home.top.controller.js"></script>
 <script src="root.controller.js"></script>
-<!-- services (ABC) -->
-<script src="assert.service.js"></script>
-<script src="auth.service.js"></script>
-<script src="error.service.js"></script>
+<script src="settings.top.controller.js"></script>
+<!-- factories (ABC) -->
+<script src="assert.factory.js"></script>
+<script src="auth.factory.js"></script>
+<script src="error.factory.js"></script>
+<script src="repos.factory.js"></script>
+<script src="settings.factory.js"></script>
+<script src="tasks.factory.js"></script>
+
 
 </body>
 </html>

@@ -39,6 +39,7 @@
       args.shift();
       throw sprintf('Unimplemented: ' + noticeFmt, args);
     }
+
   }
 
 }());

@@ -11,6 +11,15 @@ function Error(Assert) {
   return Error;
 
 
+  function generic() {
+    var args = Array.prototype.slice.call(arguments);
+    if (args) {
+      throw 'Error. ' + args;
+    } else {
+      throw 'Error. I cannot tell you anything.';
+    }
+  }
+
   /**
    * GitHub authentication is not available. User should be directed to appropriate auth flow.
    */

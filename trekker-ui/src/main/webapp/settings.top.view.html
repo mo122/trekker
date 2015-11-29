@@ -1,0 +1,23 @@
+<div layout="column" layout-margin>
+  <h1>Settings</h1>
+
+  <h2>Repositories</h2>
+
+  <div ng-repeat="repo in ctrl.repos" style="background-color: #eee;">
+    <!-- TODO Some kind of small picture (organization?) -->
+    <!-- Differentiate Public/Private repos -->
+    <div layout-align="start start">
+      <img ng-src="{{ repo.owner.avatar_url }}" style="max-height: 50px;"/>
+    </div>
+    <div flex>{{ repo.owner.login }} / {{ repo.name }}</div>
+  </div>
+  <!-- TODO If user has not included access beyond public, offer buttons to add those permissions. -->
+
+
+  <h2>Other settings</h2>
+
+  <md-input-container>
+    <label>Cache Duration (ms)</label>
+    <input type="text" ng-model="settings.cacheDuration"/>
+  </md-input-container>
+</div>
