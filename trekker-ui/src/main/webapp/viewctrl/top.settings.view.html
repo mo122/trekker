@@ -1,6 +1,8 @@
 <div layout="column" layout-margin>
   <h1>Settings</h1>
 
+  <!-- TODO GitHub scope management. Put notices where additional permissions may be useful. -->
+
   <h2>Repositories</h2>
 
   <div layout="column" class="trk-repos md-whiteframe-z1"
@@ -14,8 +16,6 @@
     <div class="trk-tiles">
       <div layout-padding class="trk-tile"
            ng-repeat="repo in repos">
-        <!-- TODO Some kind of small picture (organization?) -->
-        <!-- Differentiate Public/Private repos -->
 
         <div layout="row">
           <div flex class="md-subhead trk-chop">{{ repo.name }}</div>
