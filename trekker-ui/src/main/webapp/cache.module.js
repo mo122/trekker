@@ -110,10 +110,10 @@
      */
     function cached(key, defaultValue) {
       var fqKey = GLOBAL_NAMESPACE + config.prefix + key,
-          item = localStorage.getItem(fqKey),
+          item = _get(fqKey),
           expired; // Set to true if the item exists but is expired.
 
-      if (item && (expired = new Date().getTime() >= item.time + config.expiration)) {
+      if (item && !(expired = new Date().getTime() >= item.time + config.expiration)) {
         // Exists and is not expired.
         return item.value;
 
@@ -134,7 +134,7 @@
      */
     function get(key, value) {
       var fqKey = GLOBAL_NAMESPACE + config.prefix + key,
-          item = localStorage.getItem(fqKey);
+          item = _get(fqKey);
 
       if (item && new Date().getTime() >= item.time + config.expiration) {
         // Exists and is not expired.
@@ -188,12 +188,17 @@
       }
     }
 
+    function _get(fqKey) {
+      var item = localStorage.getItem(fqKey);
+      return item && angular.fromJson(item) || false;
+    }
+
     function _put(fqKey, value) {
       var item = {
         value: value,
         time: new Date().getTime()
       };
-      localStorage.setItem(fqKey, item);
+      localStorage.setItem(fqKey, angular.toJson(item));
       return item;
     }
 
