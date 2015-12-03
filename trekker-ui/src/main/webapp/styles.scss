@@ -1,1 +1,38 @@
 @import 'bower_components/angular-material/angular-material.scss';
+@import 'styles/material-design-icons.scss';
+
+$margin: 8px;
+
+a {
+  text-decoration: none;
+}
+
+.trk-repos {
+  img {
+    height: 50px;
+  }
+
+  .trk-owner {
+    background-color: #eee;
+  }
+
+  .trk-tiles {
+    margin-bottom: $margin;
+    margin-right: $margin;
+
+    .trk-tile {
+      display: inline-block;
+      margin-top: $margin;
+      margin-left: $margin;
+      width: 240px;
+      background-color: #eee;
+
+      .trk-chop {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow-x: hidden;
+      }
+    }
+  }
+}
+

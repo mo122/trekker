@@ -16,7 +16,7 @@ function GitHub(Auth, $http) {
     authify(options);
 
     return $http.get(URI(GH_API).path(path), options)
-        .then(identity, handleGeneralErrors);
+        .then(data, handleGeneralErrors);
   }
 
   function authify(options) {
@@ -24,8 +24,8 @@ function GitHub(Auth, $http) {
     options.headers['Authorization'] = 'token ' + Auth.ghAccessToken;
   }
 
-  function identity(arg) {
-    return arg;
+  function data(response) {
+    return response.data;
   }
 
   function handleGeneralErrors(error) {

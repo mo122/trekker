@@ -7883,3 +7883,47 @@ md-tooltip {
 @media screen and (-ms-high-contrast: active) {
   md-whiteframe {
     border: 1px solid #fff; } }
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url(bower_components/material-design-icons/iconfont/MaterialIcons-Regular.woff2) format("woff2"); }
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased; }
+
+a {
+  text-decoration: none; }
+
+.trk-repos img {
+  height: 50px; }
+
+.trk-repos .trk-owner {
+  background-color: #eee; }
+
+.trk-repos .trk-tiles {
+  margin-bottom: 8px;
+  margin-right: 8px; }
+  .trk-repos .trk-tiles .trk-tile {
+    display: inline-block;
+    margin-top: 8px;
+    margin-left: 8px;
+    width: 240px;
+    background-color: #eee; }
+    .trk-repos .trk-tiles .trk-tile .trk-chop {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow-x: hidden; }

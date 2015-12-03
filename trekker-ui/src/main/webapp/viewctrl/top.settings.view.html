@@ -3,13 +3,26 @@
 
   <h2>Repositories</h2>
 
-  <div ng-repeat="repo in vm.repos" style="background-color: #eee;">
-    <!-- TODO Some kind of small picture (organization?) -->
-    <!-- Differentiate Public/Private repos -->
-    <div layout-align="start start">
-      <img ng-src="{{ repo.owner.avatar_url }}" style="max-height: 50px;"/>
+  <div layout="column" class="trk-repos md-whiteframe-z1"
+       ng-repeat="(ownerName, repos) in vm.reposByOwner">
+    <div layout="row" layout-padding layout-align="start center" class="trk-owner">
+      <img ng-src="{{ repos[0].owner.avatar_url }}"/>
+
+      <a layout-margin class="md-headline" ng-href="{{ repos[0].owner.html_url }}">{{ ownerName }}</a>
     </div>
-    <div flex>{{ repo.owner.login }} / {{ repo.name }}</div>
+
+    <div class="trk-tiles">
+      <div layout-padding class="trk-tile"
+           ng-repeat="repo in repos">
+        <!-- TODO Some kind of small picture (organization?) -->
+        <!-- Differentiate Public/Private repos -->
+
+        <div layout="row">
+          <div flex class="md-subhead trk-chop">{{ repo.name }}</div>
+          <i class="material-icons">lock_{{ repo.private ? 'outline' : 'open' }}</i>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- TODO If user has not included access beyond public, offer buttons to add those permissions. -->
 
