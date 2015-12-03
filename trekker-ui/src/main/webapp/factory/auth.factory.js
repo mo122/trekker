@@ -46,7 +46,7 @@ function Auth(Assert, Error, localStorageService, $http, $state) {
     var location = URI(window.location);
     location.query("");
     location.hash("");
-    var redirectAuthCodeTo = location + $state.href('auth-continue');
+    var redirectAuthCodeTo = location + $state.href('auth_continue');
     window.location = URI(Auth.trekkerAuthServer).path('auth').search({
       flowId: flowId,
       flowStartTime: flowStartTime,
@@ -70,7 +70,7 @@ function Auth(Assert, Error, localStorageService, $http, $state) {
     var location = URI(window.location);
     location.query("");
     location.hash("");
-    var redirectAccessTokenTo = location + $state.href('auth-finish');
+    var redirectAccessTokenTo = location + $state.href('auth_finish');
     window.location = URI(Auth.trekkerAuthServer).path('auth-callback').search({
       flowId: flowId,
       flowStartTime: flowStartTime,

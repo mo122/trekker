@@ -12,7 +12,6 @@ function TrekkerRouteCfg($urlRouterProvider, $stateProvider) {
       .otherwise('/home');
 
   $stateProvider
-      .state('top', {})
       .state('top_auth', {
         url: '/auth',
         views: {
@@ -88,7 +87,7 @@ function TrekkerRun(Auth, LocalCache, Settings, $state, $rootScope) {
     console.debug('Routing to', to);
     if (!to.name.match(/^auth.*$/) && !Auth.isAuthd()) {
       evt.preventDefault();
-      $state.go('top.auth');
+      $state.go('top_auth');
     }
 
   });

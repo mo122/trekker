@@ -12,5 +12,5 @@ function AuthFinishCtrl(Assert, Auth, $state) {
   var location = URI(window.location);
   location.query("");
   location.hash("");
-  window.location = location + $state.href('home');
+  window.location = location + $state.href('top_home');
 }
