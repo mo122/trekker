@@ -6,21 +6,53 @@ Trekker = angular.module('Trekker', ['ngResource', 'ngMaterial', 'ui.router', 'L
 
 TrekkerRouteCfg.$inject = ['$urlRouterProvider', '$stateProvider'];
 function TrekkerRouteCfg($urlRouterProvider, $stateProvider) {
+
   $urlRouterProvider
       .when('', '/home')
       .otherwise('/home');
-  //.otherwise('');
+
   $stateProvider
-      .state('auth', {
+      .state('top', {})
+      .state('top_auth', {
         url: '/auth',
         views: {
           top: {
-            controller: 'AuthTopCtrl as ctrl',
-            templateUrl: 'auth.top.view.html'
+            controller: 'TopAuthCtrl',
+            controllerAs: 'vm',
+            templateUrl: 'viewctrl/top.auth.view.html'
           }
         }
       })
-      .state('auth-continue', {
+      .state('top_home', {
+        url: '/home',
+        views: {
+          top: {
+            controller: 'TopHomeCtrl',
+            controllerAs: 'vm',
+            templateUrl: 'viewctrl/top.home.view.html'
+          }
+        }
+      })
+      .state('top_settings', {
+        url: '/settings',
+        views: {
+          top: {
+            controller: 'TopSettingsCtrl',
+            controllerAs: 'vm',
+            templateUrl: 'viewctrl/top.settings.view.html'
+          }
+        }
+      })
+      .state('dialog_auth-no-good', {
+        views: {
+          dialog: {
+            controller: 'DialogAuthNoGoodCtrl',
+            controllerAs: 'vm',
+            templateUrl: 'viewctrl/dialog.auth-no-good.view.html'
+          }
+        }
+      })
+      .state('auth_continue', {
         url: '/auth-continue',
         views: {
           top: {
@@ -28,29 +60,11 @@ function TrekkerRouteCfg($urlRouterProvider, $stateProvider) {
           }
         }
       })
-      .state('auth-finish', {
+      .state('auth_finish', {
         url: '/auth-finish',
         views: {
           top: {
             controller: 'AuthFinishCtrl'
-          }
-        }
-      })
-      .state('home', {
-        url: '/home',
-        views: {
-          top: {
-            controller: 'HomeTopCtrl as ctrl',
-            templateUrl: 'home.top.view.html'
-          }
-        }
-      })
-      .state('settings', {
-        url: '/settings',
-        views: {
-          top: {
-            controller: 'SettingsTopCtrl as ctrl',
-            templateUrl: 'settings.top.view.html'
           }
         }
       });
@@ -74,7 +88,7 @@ function TrekkerRun(Auth, LocalCache, Settings, $state, $rootScope) {
     console.debug('Routing to', to);
     if (!to.name.match(/^auth.*$/) && !Auth.isAuthd()) {
       evt.preventDefault();
-      $state.go('auth');
+      $state.go('top.auth');
     }
 
   });

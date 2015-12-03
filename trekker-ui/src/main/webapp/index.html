@@ -26,23 +26,26 @@
 
 <ui-view name="top"></ui-view>
 
+<ui-view name="dialog"></ui-view>
+
 
 <!-- angular mash -->
 <script src="app.js"></script>
-<!-- controllers (ABC) -->
-<script src="auth.continue.controller.js"></script>
-<script src="auth.finish.controller.js"></script>
-<script src="auth.top.controller.js"></script>
-<script src="home.top.controller.js"></script>
 <script src="root.controller.js"></script>
-<script src="settings.top.controller.js"></script>
+<!-- controllers (ABC) -->
+<script src="flowctrl/auth.continue.controller.js"></script>
+<script src="flowctrl/auth.finish.controller.js"></script>
+<script src="viewctrl/top.auth.controller.js"></script>
+<script src="viewctrl/top.home.controller.js"></script>
+<script src="viewctrl/top.settings.controller.js"></script>
 <!-- factories (ABC) -->
-<script src="assert.factory.js"></script>
-<script src="auth.factory.js"></script>
-<script src="error.factory.js"></script>
-<script src="repos.factory.js"></script>
-<script src="settings.factory.js"></script>
-<script src="tasks.factory.js"></script>
+<script src="factory/assert.factory.js"></script>
+<script src="factory/auth.factory.js"></script>
+<script src="factory/error.factory.js"></script>
+<script src="factory/github.factory.js"></script>
+<script src="factory/repos.factory.js"></script>
+<script src="factory/settings.factory.js"></script>
+<script src="factory/tasks.factory.js"></script>
 
 
 </body>
