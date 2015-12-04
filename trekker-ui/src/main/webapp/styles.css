@@ -7906,7 +7906,11 @@ md-tooltip {
   -webkit-font-smoothing: antialiased; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: #448aff;
+  transition: color 0.2s; }
+  a:hover {
+    color: #2c5999; }
 
 .trk-repos img {
   height: 50px; }
@@ -7924,6 +7928,7 @@ a {
     width: 240px;
     background-color: #eee; }
     .trk-repos .trk-tiles .trk-tile .trk-chop {
+      padding-left: 8px;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow-x: hidden; }

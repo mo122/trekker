@@ -2,9 +2,16 @@
 @import 'styles/material-design-icons.scss';
 
 $margin: 8px;
+$trxColor: color 0.2s;
 
 a {
   text-decoration: none;
+  color: #448aff;
+  transition: $trxColor;
+
+  &:hover {
+    color: #2c5999;
+  }
 }
 
 .trk-repos {
@@ -28,6 +35,7 @@ a {
       background-color: #eee;
 
       .trk-chop {
+        padding-left: $margin;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow-x: hidden;

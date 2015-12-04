@@ -10,7 +10,11 @@
     <div layout="row" layout-padding layout-align="start center" class="trk-owner">
       <img ng-src="{{ repos[0].owner.avatar_url }}"/>
 
-      <a layout-margin class="md-headline" ng-href="{{ repos[0].owner.html_url }}">{{ ownerName }}</a>
+      <div layout="row">
+        <md-tooltip md-direction="top">Open user's GitHub</md-tooltip>
+        <a layout-margin class="md-headline" target="_blank"
+           ng-href="{{ repos[0].owner.html_url }}">{{ ownerName }}</a>
+      </div>
     </div>
 
     <div class="trk-tiles">
@@ -18,8 +22,22 @@
            ng-repeat="repo in repos">
 
         <div layout="row">
+          <div layout="row">
+            <md-tooltip md-direction="top">Open repo on GitHub</md-tooltip>
+            <a class="material-icons" target="_blank" ng-href="{{ repo.html_url }}">open_in_new</a>
+          </div>
+
           <div flex class="md-subhead trk-chop">{{ repo.name }}</div>
-          <i class="material-icons">lock_{{ repo.private ? 'outline' : 'open' }}</i>
+
+          <!-- layout b/c prevents extra bottom margin, even though there is no CSS margin/padding. -->
+          <div layout="row" ng-show="repo.private">
+            <md-tooltip md-direction="top">Private repo</md-tooltip>
+            <i class="material-icons">lock_outline</i>
+          </div>
+          <div layout="row" ng-hide="repo.private">
+            <md-tooltip md-direction="top">Public repo</md-tooltip>
+            <i class="material-icons">lock_open</i>
+          </div>
         </div>
       </div>
     </div>
