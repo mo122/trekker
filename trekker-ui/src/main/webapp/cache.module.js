@@ -11,7 +11,17 @@
     var service = this,
         GLOBAL_NAMESPACE = 'com.github.dirkraft.JsLocalCache:',
         config = service.config = {
+
+          /**
+           * Namespaces all the entries of this LocalCache.
+           * @type {String}
+           */
           prefix: '',
+
+          /**
+           * How long cached responses are kept in ms, defaults to 5 minutes
+           * @type {Number}
+           */
           expiration: 1000 * 60 * 60 * 24 // milliseconds
         };
 

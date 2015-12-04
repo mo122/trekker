@@ -2,6 +2,7 @@ Trekker = angular.module('Trekker', ['ngResource', 'ngMaterial', 'ui.router', 'L
       'com.github.dirkraft.JsLocalCache'])
     .config(TrekkerRouteCfg)
     .config(TrekkerStorageCfg)
+    .run(TrekkerLocalCacheRun)
     .run(TrekkerRun);
 
 TrekkerRouteCfg.$inject = ['$urlRouterProvider', '$stateProvider'];
@@ -80,8 +81,21 @@ function TrekkerStorageCfg(localStorageServiceProvider, $sceDelegateProvider) {
   ]);
 }
 
-TrekkerRun.$inject = ['Auth', 'LocalCache', 'Settings', '$state', '$rootScope'];
-function TrekkerRun(Auth, LocalCache, Settings, $state, $rootScope) {
+TrekkerLocalCacheRun.$inject = ['LocalCache', 'Settings'];
+function TrekkerLocalCacheRun(LocalCache, Settings) {
+
+  // First apply any LocalCache config to our saved Settings that is not specified there.
+  _.each(LocalCache.config, function (v, k) {
+    if (typeof Settings.settings.localCache[k] === 'undefined') {
+      Settings.settings.localCache[k] = v;
+    }
+  });
+  // Then replace the LocalCache config with the instance in our settings, which is scoped and watched for updates.
+  LocalCache.config = Settings.settings.localCache;
+}
+
+TrekkerRun.$inject = ['Auth', '$state', '$rootScope'];
+function TrekkerRun(Auth, $state, $rootScope) {
 
   $rootScope.$on('$stateChangeStart', function (evt, to, params) {
     console.debug('Routing to', to);

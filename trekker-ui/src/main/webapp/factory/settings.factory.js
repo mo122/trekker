@@ -3,16 +3,39 @@ Trekker.factory('Settings', Settings);
 Settings.$inject = ['localStorageService', '$rootScope'];
 
 function Settings(localStorageService, $rootScope) {
-  var Settings = this;
+  var Settings = this,
+      defaults = {
 
-  localStorageService.bind($rootScope, 'settings');
-  if (!$rootScope.settings) {
-    $rootScope.settings = {
+        /**
+         * LocalCache settings and so conforms to the configuration format of LocalCache.
+         * @type {Object}
+         */
+        localCache: {
 
-      cacheDuration: 1000 * 60 * 5 // defaults to 5 minutes
+          expiration: 1000 * 60 * 5
 
-    };
-  }
+        },
+
+        /**
+         * Repositories activated with Trekker. Keys are GitHub full names such as "organization/repository"
+         * @type {Object<String, Boolean>}
+         */
+        repos: {}
+
+      };
+
+  // Load any saved settings and bind the object to a scope to automatically persist changes.
+  localStorageService.bind($rootScope, 'settings', {});
+
+  // Also make available on the service.
+  Settings.settings = $rootScope.settings;
+
+  _.each(defaults, function (v, k) {
+    if (typeof Settings.settings[k] === 'undefined') {
+      Settings.settings[k] = v;
+    }
+  });
+
 
   return Settings;
 }

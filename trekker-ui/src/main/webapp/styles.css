@@ -7912,6 +7912,10 @@ a {
   a:hover {
     color: #2c5999; }
 
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 8px;
+  margin-bottom: 8px; }
+
 .trk-repos img {
   height: 50px; }
 
@@ -7926,7 +7930,15 @@ a {
     margin-top: 8px;
     margin-left: 8px;
     width: 240px;
-    background-color: #eee; }
+    background-color: #eee;
+    transition: background-color 0.2s;
+    cursor: pointer; }
+    .trk-repos .trk-tiles .trk-tile:hover {
+      background-color: #ddd; }
+    .trk-repos .trk-tiles .trk-tile.trk-active {
+      background-color: #b9f6ca; }
+      .trk-repos .trk-tiles .trk-tile.trk-active:hover {
+        background-color: #b2ecc2; }
     .trk-repos .trk-tiles .trk-tile .trk-chop {
       padding-left: 8px;
       white-space: nowrap;

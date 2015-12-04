@@ -1,8 +1,13 @@
 @import 'bower_components/angular-material/angular-material.scss';
 @import 'styles/material-design-icons.scss';
 
-$margin: 8px;
+$baseMargin: 8px;
 $trxColor: color 0.2s;
+$trxBgColor: background-color 0.2s;
+$bgMild: #eee;
+$bgMildHover: #ddd;
+$bgActive: #b9f6ca;
+$bgActiveHover: #b2ecc2;
 
 a {
   text-decoration: none;
@@ -14,28 +19,47 @@ a {
   }
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin-top: $baseMargin;
+  margin-bottom: $baseMargin;
+}
+
 .trk-repos {
   img {
     height: 50px;
   }
 
   .trk-owner {
-    background-color: #eee;
+    background-color: $bgMild;
   }
 
   .trk-tiles {
-    margin-bottom: $margin;
-    margin-right: $margin;
+    margin-bottom: $baseMargin;
+    margin-right: $baseMargin;
 
     .trk-tile {
       display: inline-block;
-      margin-top: $margin;
-      margin-left: $margin;
+      margin-top: $baseMargin;
+      margin-left: $baseMargin;
       width: 240px;
-      background-color: #eee;
+
+      background-color: $bgMild;
+      transition: $trxBgColor;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $bgMildHover;
+      }
+
+      &.trk-active {
+        background-color: $bgActive;
+        &:hover {
+          background-color: $bgActiveHover;
+        }
+      }
 
       .trk-chop {
-        padding-left: $margin;
+        padding-left: $baseMargin;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow-x: hidden;

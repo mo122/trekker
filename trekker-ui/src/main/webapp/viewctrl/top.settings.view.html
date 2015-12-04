@@ -1,9 +1,12 @@
 <div layout="column" layout-margin>
-  <h1>Settings</h1>
+  <h1 class="md-display-2">Settings</h1>
 
   <!-- TODO GitHub scope management. Put notices where additional permissions may be useful. -->
 
-  <h2>Repositories</h2>
+  <h2 class="md-display-1">
+    Repositories
+    <small class="md-subhead">Register repos with Trekker</small>
+  </h2>
 
   <div layout="column" class="trk-repos md-whiteframe-z1"
        ng-repeat="(ownerName, repos) in vm.reposByOwner">
@@ -19,7 +22,9 @@
 
     <div class="trk-tiles">
       <div layout-padding class="trk-tile"
-           ng-repeat="repo in repos">
+           ng-class="{ 'trk-active': vm.repoIsActive(repo) }"
+           ng-repeat="repo in repos"
+           ng-click="vm.toggleRepo(repo)">
 
         <div layout="row">
           <div layout="row">
@@ -45,7 +50,7 @@
   <!-- TODO If user has not included access beyond public, offer buttons to add those permissions. -->
 
 
-  <h2>Other settings</h2>
+  <h2 class="md-display-1">Other settings</h2>
 
   <md-input-container>
     <label>Cache Duration (ms)</label>
