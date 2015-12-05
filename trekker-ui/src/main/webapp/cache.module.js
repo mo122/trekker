@@ -35,6 +35,7 @@
     service.refresh = refresh;
     service.put = put;
     service.remove = remove;
+    service.clear = clear;
 
     return service;
 

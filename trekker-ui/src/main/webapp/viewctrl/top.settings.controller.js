@@ -1,8 +1,8 @@
 Trekker.controller('TopSettingsCtrl', TopSettingsCtrl);
 
-TopSettingsCtrl.$inject = ['Repos', 'GitHub', 'Settings', 'Auth'];
+TopSettingsCtrl.$inject = ['Repos', 'GitHub', 'Settings', 'Auth', 'LocalCache'];
 
-function TopSettingsCtrl(Repos, GitHub, Settings, Auth) {
+function TopSettingsCtrl(Repos, GitHub, Settings, Auth, LocalCache) {
   var vm = this,
       scopeDiffClasses = {
         // isCurrent
@@ -92,6 +92,8 @@ function TopSettingsCtrl(Repos, GitHub, Settings, Auth) {
    */
   function refreshAccessToken() {
     Settings.settings.scopes = vm.desiredScopes;
+    // Flush it all down the drain. Permission affect everything.
+    LocalCache.clear();
     Auth.startAuthFlow();
   }
 
