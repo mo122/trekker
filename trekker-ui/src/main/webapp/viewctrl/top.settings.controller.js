@@ -1,8 +1,8 @@
 Trekker.controller('TopSettingsCtrl', TopSettingsCtrl);
 
-TopSettingsCtrl.$inject = ['Repos', 'GitHub', 'Settings'];
+TopSettingsCtrl.$inject = ['Repos', 'GitHub', 'Settings', 'Auth'];
 
-function TopSettingsCtrl(Repos, GitHub, Settings) {
+function TopSettingsCtrl(Repos, GitHub, Settings, Auth) {
   var vm = this,
       scopeDiffClasses = {
         // isCurrent
@@ -42,7 +42,10 @@ function TopSettingsCtrl(Repos, GitHub, Settings) {
   vm.repoIsActive = repoIsActive;
   vm.toggleRepo = toggleRepo;
 
-  GitHub.scopes().then(bind(vm, 'currentScopes'));
+  GitHub.scopes().then(function (currentScopes) {
+    vm.desiredScopes = _.clone(currentScopes);
+    vm.currentScopes = _.clone(currentScopes);
+  });
 
   Repos.cacheList().then(function (repos) {
     for (var i = 0; i < repos.length; i++) {
@@ -84,9 +87,12 @@ function TopSettingsCtrl(Repos, GitHub, Settings) {
     return _.eq(vm.desiredScopes, vm.currentScopes);
   }
 
-  // TODO
+  /**
+   * Updates settings desired scopes and starts a new auth flow, which should respect the new scope settings.
+   */
   function refreshAccessToken() {
-    // TODO reauth with the desired set of scopes to get an access token authorized to all such scopes
+    Settings.settings.scopes = vm.desiredScopes;
+    Auth.startAuthFlow();
   }
 
   /**

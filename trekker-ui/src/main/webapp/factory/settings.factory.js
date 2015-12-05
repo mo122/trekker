@@ -1,8 +1,8 @@
 Trekker.factory('Settings', Settings);
 
-Settings.$inject = ['localStorageService', '$rootScope'];
+Settings.$inject = ['Exit', 'localStorageService', '$rootScope'];
 
-function Settings(localStorageService, $rootScope) {
+function Settings(Exit, localStorageService, $rootScope) {
   var Settings = this,
       defaults = {
 
@@ -42,6 +42,14 @@ function Settings(localStorageService, $rootScope) {
     }
   });
 
+  // If the settings are modified but navigation occurs immediately, the bind will never have a digest cycle.
+  Exit.registerCallback(flushSettings);
 
   return Settings;
+
+
+  function flushSettings() {
+    localStorageService.set('settings', Settings.settings);
+    console.log('Immediate settings flush due to navigation.');
+  }
 }
