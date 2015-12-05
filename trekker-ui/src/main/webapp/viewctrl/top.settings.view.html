@@ -1,7 +1,44 @@
 <div layout="column" layout-margin>
   <h1 class="md-display-2">Settings</h1>
 
-  <!-- TODO GitHub scope management. Put notices where additional permissions may be useful. -->
+  <h2 class="md-display-1">
+    GitHub Scopes
+    <small class="md-subhead">How much GitHub access will you give to Trekker?</small>
+  </h2>
+
+  <div layout="column" class="trk-scopes md-whiteframe-z1">
+    <div class="trk-toggle-tiles">
+      <div layout-padding layout="column" class="trk-tile trk-active">
+        <div class="md-subhead">default</div>
+        <small>The default GitHub scope can see public repos and is always active.</small>
+      </div>
+      <div layout-padding layout="column" class="trk-tile"
+           ng-class="[ vm.scopeDiffClass('repo') ]"
+           ng-click="vm.toggleDesiredScope('repo')">
+        <div layout="row">
+          <span flex class="md-subhead">repo</span>
+
+          <div layout="row">
+            <i class="material-icons trk-add-icon">add</i>
+            <md-tooltip md-direction="top">
+              This new GitHub permission needs to be authorized. Click 'Authorize!' to approve it on GitHub.
+            </md-tooltip>
+          </div>
+          <div layout="row">
+            <i class="material-icons trk-remove-icon">remove</i>
+            <md-tooltip md-direction="top">
+              This old GitHub permission is no longer needed. Click 'Authorize!' to revoke it on GitHub.
+            </md-tooltip>
+          </div>
+        </div>
+        <small>This GitHub scope is required to interact with private repositories.</small>
+      </div>
+    </div>
+    <div layout-margin ng-hide="vm.desiredScopeDiffersFromAuth()">
+      <md-button class="md-warn" ng-click="vm.refreshAccessToken()">Authorize</md-button>
+      <span flex>Your desired GitHub scopes have changed. Authorize these permissions to Trekker on GitHub.</span>
+    </div>
+  </div>
 
   <h2 class="md-display-1">
     Repositories
@@ -18,22 +55,17 @@
         <a layout-margin class="md-headline" target="_blank"
            ng-href="{{ repos[0].owner.html_url }}">{{ ownerName }}</a>
       </div>
+
+      <!-- TODO legend -->
     </div>
 
-    <div class="trk-tiles">
+    <div class="trk-toggle-tiles">
       <div layout-padding class="trk-tile"
            ng-class="{ 'trk-active': vm.repoIsActive(repo) }"
            ng-repeat="repo in repos"
            ng-click="vm.toggleRepo(repo)">
 
         <div layout="row">
-          <div layout="row">
-            <md-tooltip md-direction="top">Open repo on GitHub</md-tooltip>
-            <a class="material-icons" target="_blank" ng-href="{{ repo.html_url }}">open_in_new</a>
-          </div>
-
-          <div flex class="md-subhead trk-chop">{{ repo.name }}</div>
-
           <!-- layout b/c prevents extra bottom margin, even though there is no CSS margin/padding. -->
           <div layout="row" ng-show="repo.private">
             <md-tooltip md-direction="top">Private repo</md-tooltip>
@@ -43,11 +75,18 @@
             <md-tooltip md-direction="top">Public repo</md-tooltip>
             <i class="material-icons">lock_open</i>
           </div>
+
+          <div flex class="md-subhead trk-chop">{{ repo.name }}</div>
+
+          <div layout="row">
+            <md-tooltip md-direction="top">Open repo on GitHub</md-tooltip>
+            <a class="material-icons" target="_blank" ng-href="{{ repo.html_url }}">open_in_new</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- TODO If user has not included access beyond public, offer buttons to add those permissions. -->
+  <!-- TODO If user has not included access beyond public, offer indication to add those scopes. -->
 
 
   <h2 class="md-display-1">Other settings</h2>

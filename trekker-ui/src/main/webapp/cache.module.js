@@ -8,22 +8,23 @@
   LocalCache.$inject = ['$q'];
 
   function LocalCache($q) {
-    var service = this,
-        GLOBAL_NAMESPACE = 'com.github.dirkraft.JsLocalCache:',
-        config = service.config = {
+    var service = {},
+        GLOBAL_NAMESPACE = 'com.github.dirkraft.JsLocalCache:';
 
-          /**
-           * Namespaces all the entries of this LocalCache.
-           * @type {String}
-           */
-          prefix: '',
+    service.config = {
 
-          /**
-           * How long cached responses are kept in ms, defaults to 5 minutes
-           * @type {Number}
-           */
-          expiration: 1000 * 60 * 60 * 24 // milliseconds
-        };
+      /**
+       * Namespaces all the entries of this LocalCache.
+       * @type {String}
+       */
+      prefix: '',
+
+      /**
+       * How long cached responses are kept in ms, defaults to 5 minutes
+       * @type {Number}
+       */
+      expiration: 1000 * 60 * 60 * 24 // milliseconds
+    };
 
     service.of = of;
     service.caching = caching;
@@ -45,8 +46,8 @@
     function of(realm) {
       var localCache = new LocalCache($q);
       // Inherit global settings.
-      localCache.config.prefix = config.prefix + realm + ':';
-      localCache.config.expiration = config.expiration;
+      localCache.config.prefix = service.config.prefix + realm + ':';
+      localCache.config.expiration = service.config.expiration;
       return localCache;
     }
 
@@ -119,11 +120,11 @@
      * @returns {*}
      */
     function cached(key, defaultValue) {
-      var fqKey = GLOBAL_NAMESPACE + config.prefix + key,
+      var fqKey = GLOBAL_NAMESPACE + service.config.prefix + key,
           item = _get(fqKey),
           expired; // Set to true if the item exists but is expired.
 
-      if (item && !(expired = new Date().getTime() >= item.time + config.expiration)) {
+      if (item && !(expired = new Date().getTime() >= item.time + service.config.expiration)) {
         // Exists and is not expired.
         return item.value;
 
@@ -143,10 +144,10 @@
      * @return {*}
      */
     function get(key, value) {
-      var fqKey = GLOBAL_NAMESPACE + config.prefix + key,
+      var fqKey = GLOBAL_NAMESPACE + service.config.prefix + key,
           item = _get(fqKey);
 
-      if (item && new Date().getTime() >= item.time + config.expiration) {
+      if (item && new Date().getTime() >= item.time + service.config.expiration) {
         // Exists and is not expired.
         return item.value;
 
@@ -164,7 +165,7 @@
      * @return {*}
      */
     function refresh(key, value) {
-      var fqKey = GLOBAL_NAMESPACE + config.prefix + key,
+      var fqKey = GLOBAL_NAMESPACE + service.config.prefix + key,
           resolvedValue = value === 'function' ? value() : value;
       _put(fqKey, resolvedValue);
       return resolvedValue;
@@ -175,7 +176,7 @@
      * @param {*} value
      */
     function put(key, value) {
-      var fqKey = GLOBAL_NAMESPACE + config.prefix + key;
+      var fqKey = GLOBAL_NAMESPACE + service.config.prefix + key;
       _put(fqKey, value);
     }
 
@@ -183,13 +184,13 @@
      * @param {String} key
      */
     function remove(key) {
-      var fqKey = GLOBAL_NAMESPACE + config.prefix + key;
+      var fqKey = GLOBAL_NAMESPACE + service.config.prefix + key;
       localStorage.removeItem(fqKey);
     }
 
     function clear() {
       // Reverse order because indices change as things are deleted.
-      var fqKeyPrefix = GLOBAL_NAMESPACE + config.prefix;
+      var fqKeyPrefix = GLOBAL_NAMESPACE + service.config.prefix;
       for (var i = localStorage.length - 1; i >= 0; i--) {
         var key = localStorage.key(i);
         if (key.indexOf(fqKeyPrefix) == 0 /* starts with */) {

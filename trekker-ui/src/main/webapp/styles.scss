@@ -8,6 +8,8 @@ $bgMild: #eee;
 $bgMildHover: #ddd;
 $bgActive: #b9f6ca;
 $bgActiveHover: #b2ecc2;
+$bgToActive: #e6f6ed;
+$bgFromActive: #f6e2b0;
 
 a {
   text-decoration: none;
@@ -24,6 +26,64 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: $baseMargin;
 }
 
+.trk-toggle-tiles {
+  margin-bottom: $baseMargin;
+  margin-right: $baseMargin;
+
+  .trk-tile {
+    display: inline-block;
+    margin-top: $baseMargin;
+    margin-left: $baseMargin;
+    width: 240px;
+
+    background-color: $bgMild;
+    transition: $trxBgColor;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $bgMildHover;
+    }
+
+    &.trk-active {
+      background-color: $bgActive;
+      &:hover {
+        background-color: $bgActiveHover;
+      }
+    }
+
+  }
+
+}
+
+.trk-scopes {
+  .trk-tile {
+    height: 80px;
+  }
+
+  // Hide by default.
+  .trk-add-icon, .trk-remove-icon {
+    display: none;
+  }
+
+  .trk-add {
+    &, &:hover {
+      background-color: $bgToActive;
+    }
+    .trk-add-icon {
+      display: inline-block;
+    }
+  }
+  .trk-remove {
+    &, &:hover {
+      background-color: $bgFromActive;
+    }
+    .trk-remove-icon {
+      display: inline-block;
+    }
+  }
+
+}
+
 .trk-repos {
   img {
     height: 50px;
@@ -33,38 +93,11 @@ h1, h2, h3, h4, h5, h6 {
     background-color: $bgMild;
   }
 
-  .trk-tiles {
-    margin-bottom: $baseMargin;
-    margin-right: $baseMargin;
-
-    .trk-tile {
-      display: inline-block;
-      margin-top: $baseMargin;
-      margin-left: $baseMargin;
-      width: 240px;
-
-      background-color: $bgMild;
-      transition: $trxBgColor;
-      cursor: pointer;
-
-      &:hover {
-        background-color: $bgMildHover;
-      }
-
-      &.trk-active {
-        background-color: $bgActive;
-        &:hover {
-          background-color: $bgActiveHover;
-        }
-      }
-
-      .trk-chop {
-        padding-left: $baseMargin;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow-x: hidden;
-      }
-    }
+  .trk-chop {
+    padding-left: $baseMargin;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
   }
 }
 

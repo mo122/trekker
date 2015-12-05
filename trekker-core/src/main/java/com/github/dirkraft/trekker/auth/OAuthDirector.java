@@ -73,11 +73,15 @@ public class OAuthDirector {
       }
 
       // Create impenetrable state.
-      URI uri = new URIBuilder("https://github.com/login/oauth/authorize")
+      URIBuilder builder = new URIBuilder("https://github.com/login/oauth/authorize")
         .addParameter("client_id", CLIENT_ID)
         .addParameter("state", encodeHmacState(state))
-        .addParameter("redirect_uri", request.queryParams("redirectAuthCodeTo"))
-        .build();
+        .addParameter("redirect_uri", request.queryParams("redirectAuthCodeTo"));
+
+      Optional.ofNullable(request.queryParams("scope"))
+        .ifPresent((commaSepScopes) -> builder.addParameter("scope", commaSepScopes));
+
+      URI uri = builder.build();
 
       response.redirect(uri.toString());
       return null;

@@ -1,8 +1,8 @@
 Trekker.factory('Auth', Auth);
 
-Auth.$inject = ['Assert', 'Error', 'localStorageService', '$http', '$state'];
+Auth.$inject = ['Settings', 'Assert', 'Error', 'localStorageService', '$state'];
 
-function Auth(Assert, Error, localStorageService, $http, $state) {
+function Auth(Settings, Assert, Error, localStorageService, $state) {
   var Auth = this;
 
   Auth.trekkerAuthServer = 'http://localhost:4567';
@@ -50,6 +50,7 @@ function Auth(Assert, Error, localStorageService, $http, $state) {
     window.location = URI(Auth.trekkerAuthServer).path('auth').search({
       flowId: flowId,
       flowStartTime: flowStartTime,
+      scope: Settings.settings.scopes.join(','),
       redirectAuthCodeTo: redirectAuthCodeTo
     });
   }

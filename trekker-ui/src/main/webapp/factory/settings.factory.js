@@ -17,6 +17,12 @@ function Settings(localStorageService, $rootScope) {
         },
 
         /**
+         * GitHub scopes desired by the user.
+         * @type {Array<String>}
+         */
+        scopes: [],
+
+        /**
          * Repositories activated with Trekker. Keys are GitHub full names such as "organization/repository"
          * @type {Object<String, Boolean>}
          */

@@ -1,21 +1,35 @@
 Trekker.factory('GitHub', GitHub);
 
-GitHub.$inject = ['Auth', '$http'];
+GitHub.$inject = ['Const', 'Auth', '$http'];
 
-function GitHub(Auth, $http) {
-  var GitHub = this,
-      GH_API = 'https://api.github.com';
+function GitHub(Const, Auth, $http) {
+  var GitHub = this;
 
+  GitHub.scopes = scopes;
   GitHub.get = get;
 
   return GitHub;
 
 
+  function scopes() {
+    var options = {};
+    authify(options);
+    return $http.get(URI(Const.GH_API), options)
+        .then(function (response) {
+          return _.filter(response.headers('X-OAuth-Scopes').split(', '));
+        });
+  }
+
+  /**
+   * @param {String} path
+   * @param {{}} [options]
+   * @returns {*}
+   */
   function get(path, options) {
     options = options || {};
     authify(options);
 
-    return $http.get(URI(GH_API).path(path), options)
+    return $http.get(URI(Const.GH_API).path(path), options)
         .then(data, handleGeneralErrors);
   }
 
