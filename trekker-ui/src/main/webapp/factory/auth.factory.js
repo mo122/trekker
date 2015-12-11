@@ -5,7 +5,9 @@ Auth.$inject = ['Settings', 'Assert', 'Error', 'localStorageService', '$state'];
 function Auth(Settings, Assert, Error, localStorageService, $state) {
   var Auth = this;
 
-  Auth.trekkerAuthServer = 'http://localhost:4567';
+  Auth.trekkerAuthServer = 'localhost' == window.location.hostname ?
+      'http://localhost:4567' :
+      window.location.protocol + '//auth.dirkraft.com';
   Auth.ghAccessToken = localStorageService.get('auth.ghAccessToken');
 
   Auth.isAuthd = isAuthd;

@@ -13,6 +13,6 @@ function Repos(LocalCache, GitHub) {
 
 
   function list() {
-    return GitHub.get('user/repos');
+    return GitHub.getAll('user/repos');
   }
 }

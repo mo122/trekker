@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="styles.css">
 
   <!-- 3rd party utility (ABC) -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/lodash/lodash.js"></script>
   <script src="bower_components/moment/moment.js"></script>
   <script src="bower_components/sprintf/src/sprintf.js"></script>
@@ -24,6 +25,12 @@
 
 </head>
 <body>
+
+<nav layout="row" layout-margin>
+  <a ui-sref="top_home">Trekker!</a>
+  <span flex><!-- fill --></span>
+  <a ui-sref="top_settings" class="material-icons">settings</a>
+</nav>
 
 <ui-view name="top"></ui-view>
 

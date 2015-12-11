@@ -1,5 +1,5 @@
 <div layout="column" layout-margin>
-  <h1 class="md-display-2">Settings</h1>
+  <h1 class="md-display-1">Settings</h1>
 
   <h2 class="md-display-1">
     GitHub Scopes
@@ -69,18 +69,20 @@
           <!-- layout b/c prevents extra bottom margin, even though there is no CSS margin/padding. -->
           <div layout="row" ng-show="repo.private">
             <md-tooltip md-direction="top">Private repo</md-tooltip>
-            <i class="material-icons">lock_outline</i>
+            <i class="material-icons trk-icon-private">lock_outline</i>
           </div>
           <div layout="row" ng-hide="repo.private">
             <md-tooltip md-direction="top">Public repo</md-tooltip>
-            <i class="material-icons">lock_open</i>
+            <i class="material-icons trk-icon-public">lock_open</i>
           </div>
 
           <div flex class="md-subhead trk-chop">{{ repo.name }}</div>
 
           <div layout="row">
             <md-tooltip md-direction="top">Open repo on GitHub</md-tooltip>
-            <a class="material-icons" target="_blank" ng-href="{{ repo.html_url }}">open_in_new</a>
+            <a class="material-icons" target="_blank"
+               ng-click="$event.stopPropagation()"
+               ng-href="{{ repo.html_url }}">open_in_new</a>
           </div>
         </div>
       </div>
@@ -89,10 +91,15 @@
   <!-- TODO If user has not included access beyond public, offer indication to add those scopes. -->
 
 
-  <h2 class="md-display-1">Other settings</h2>
+  <h2 class="md-display-1">
+    Other settings
+    <small class="md-subhead">Gosu settings</small>
+  </h2>
 
-  <md-input-container>
-    <label>Cache Duration (ms)</label>
-    <input type="text" ng-model="settings.localCache.expiration"/>
-  </md-input-container>
+  <div layout="column" class="md-whiteframe-z1">
+    <md-input-container>
+      <label>Cache Duration (ms)</label>
+      <input type="text" ng-model="settings.localCache.expiration"/>
+    </md-input-container>
+  </div>
 </div>
