@@ -15,11 +15,20 @@ function Tasks(GitHub, LocalCache) {
   /**
    * https://developer.github.com/v3/search/#search-issues
    *
-   * @param q {String}
+   * @param q {String} query
+   * @param [sort] {String} comments | created | updated
+   * @param [order] {String} desc | asc
    * @returns {GitHubIssue[]}
    */
-  function search(q) {
-    return GitHub.get(URI('search/issues').addQuery('q', q));
+  function search(q, sort, order) {
+    var uri = URI('search/issues').addQuery('q', q);
+    if (sort) {
+      uri.addQuery('sort', sort);
+    }
+    if (order) {
+      uri.addQuery('order', order);
+    }
+    return GitHub.get(uri);
   }
 
 }

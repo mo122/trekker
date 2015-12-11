@@ -46,7 +46,7 @@
 
       <!-- lines, minimal info -->
       <md-list>
-        <md-list-item ng-repeat="task in [vm.watchTasks[0]]" layout="row">
+        <md-list-item ng-repeat="task in vm.watchTasks" layout="row">
           <div flex>
             <a ng-href="{{ task.html_url }}">#{{ task.number }}
               <span class="trk-textish">{{ task.title }}</span></a>
