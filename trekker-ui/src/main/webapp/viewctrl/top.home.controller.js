@@ -16,6 +16,7 @@ function TopHomeCtrl(Tasks, Users, Repos, Settings, $q) {
   $q.all([
     Users.cacheCurrent(),
     Repos.cacheGet(_.keys(_.pick(Settings.settings.repos, _.identity))[0]) // TODO placeholder
+
   ]).then(function (results) {
     vm.user = results[0];
     vm.repo = results[1];

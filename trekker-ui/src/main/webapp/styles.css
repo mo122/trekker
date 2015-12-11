@@ -7913,6 +7913,8 @@ a {
     transition: color 0.2s; }
     a[href]:hover {
       color: #2c5999; }
+  a .trk-textish {
+    color: rgba(0, 0, 0, 0.87); }
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 8px;
@@ -7923,16 +7925,24 @@ section {
   section:not(:last-of-type) {
     margin-right: 16px; }
 
+md-list {
+  padding-top: 0;
+  padding-bottom: 0; }
+
 .trk-top-home .trk-banner {
   margin-top: 0;
+  margin-bottom: 0;
   background: #eee; }
 
 .trk-top-home .trk-banner-fire {
   margin-top: 0;
   background: red; }
 
-.trk-top-home .trk-img-avatar {
+.trk-top-home .trk-tasks-cards .trk-img-avatar {
   height: 40px; }
+
+.trk-top-home .trk-tasks-lines .trk-img-avatar {
+  height: 25px; }
 
 .trk-top-settings .trk-toggle-tiles {
   margin-bottom: 8px;

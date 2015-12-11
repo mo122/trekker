@@ -1,31 +1,32 @@
 <div layout="column" layout-margin class="trk-top-home">
   <header layout="row">
     <h1 class="md-display-1" flex>
-      <a ng-href="{{  }}">{{ vm.orgRepo }}</a>
+      <a ng-href="{{ vm.repo.html_url }}">{{ vm.repo.full_name }}</a>
     </h1>
     <md-checkbox md-no-ink ng-model="vm.prefs.alwaysRefresh">always refresh?</md-checkbox>
   </header>
 
-  <section class="md-whiteframe-z2" ng-show="vm.fireTasks.length">
+  <section class="md-whiteframe-z2 trk-tasks-cards" ng-show="vm.fireTasks.length">
     <h2 layout-padding class="md-title trk-banner-fire">Fire</h2>
 
     <div layout-margin>
       <!-- cards, some info -->
       <div layout="row" ng-repeat="task in vm.fireTasks">
-        <img class="trk-img-avatar" ng-src="{{ task.user.avatar_url }}"/>
 
-        <div layout="column">
+        <div layout="column" flex>
           <span layout="row">
-            <a ng-href="{{ task.html_url }}" target="_blank">#{{ task.number }}</a>
-            {{ task.title }}
+            <a ng-href="{{ task.html_url }}" target="_blank">#{{ task.number }}
+              <span class="trk-textish">{{ task.title }}</span></a>
           </span>
         </div>
+
+        <img class="trk-img-avatar" ng-src="{{ task.user.avatar_url }}"/>
       </div>
     </div>
   </section>
 
   <div layout="row">
-    <section class="md-whiteframe-z1" flex="50%" ng-show="vm.myTasks.length">
+    <section class="md-whiteframe-z1 trk-tasks-cards" flex="50%" ng-show="vm.myTasks.length">
       <h2 layout-padding class="md-title trk-banner">Mine</h2>
 
       <!-- cards, some info -->
@@ -34,14 +35,17 @@
       </div>
     </section>
 
-    <section class="md-whiteframe-z1" flex="50%" ng-show="vm.watchTasks.length">
+    <section class="md-whiteframe-z1 trk-tasks-lines" flex="50%" ng-show="vm.watchTasks.length">
       <h2 layout-padding class="md-title trk-banner">Watch</h2>
 
       <!-- lines, minimal info -->
       <md-list>
-        <md-list-item ng-repeat="task in [vm.watchTasks[0]]">
-          <a ng-href="{{ task.html_url }}" target="_blank">#{{ task.number }}</a>
-          <pre>{{ task | json }}</pre>
+        <md-list-item ng-repeat="task in [vm.watchTasks[0]]" layout="row">
+          <div flex>
+            <a ng-href="{{ task.html_url }}" target="_blank">#{{ task.number }}
+              <span class="trk-textish">{{ task.title }}</span></a>
+          </div>
+          <img class="trk-img-avatar" ng-src="{{ task.assignee.avatar_url }}">
         </md-list-item>
       </md-list>
     </section>

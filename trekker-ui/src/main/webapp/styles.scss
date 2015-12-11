@@ -25,6 +25,10 @@ a {
       color: #2c5999;
     }
   }
+
+  .trk-textish {
+    color: $txtBlackish;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -39,17 +43,32 @@ section {
   }
 }
 
+md-list {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .trk-top-home {
   .trk-banner {
     margin-top: 0;
+    margin-bottom: 0;
     background: $bgMild;
   }
   .trk-banner-fire {
     margin-top: 0;
     background: red;
   }
-  .trk-img-avatar {
-    height: 40px;
+
+  .trk-tasks-cards {
+    .trk-img-avatar {
+      height: 40px;
+    }
+  }
+
+  .trk-tasks-lines {
+    .trk-img-avatar {
+      height: 25px;
+    }
   }
 }
 
