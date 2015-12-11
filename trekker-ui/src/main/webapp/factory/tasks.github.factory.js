@@ -6,7 +6,8 @@ function Tasks(GitHub, LocalCache) {
   var Tasks = this,
       cache = LocalCache.of('Tasks');
 
-  Tasks.search = search;
+  Tasks.search = cache.cachingPromise('search', search, true);
+  Tasks.cacheSearch = cache.cachingPromise('search', search);
 
   return Tasks;
 

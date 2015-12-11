@@ -1,18 +1,18 @@
 Trekker.factory('Users', Users);
 
-Users.$inject = [];
+Users.$inject = ['GitHub', 'LocalCache'];
 
-function Users() {
+function Users(GitHub, LocalCache) {
   var Users = this,
-      GH_API = 'https://api.github.com',
       cache = LocalCache.of('Users');
 
   Users.current = cache.cachingPromise('current', current, true);
+  Users.cacheCurrent =  cache.cachingPromise('current', current);
 
   return Users;
 
 
   function current() {
-    return $http.get(URI(GH_API).path('user'));
+    return GitHub.get('user');
   }
 }

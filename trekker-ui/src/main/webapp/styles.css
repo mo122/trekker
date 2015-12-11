@@ -7907,14 +7907,24 @@ md-tooltip {
 
 a {
   text-decoration: none;
-  color: #448aff;
-  transition: color 0.2s; }
-  a:hover {
-    color: #2c5999; }
+  color: rgba(0, 0, 0, 0.87); }
+  a[href] {
+    color: #448aff;
+    transition: color 0.2s; }
+    a[href]:hover {
+      color: #2c5999; }
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 8px;
   margin-bottom: 8px; }
+
+section {
+  margin-bottom: 16px;
+  margin-right: 16px; }
+
+.trk-top-home .trk-banner {
+  margin-top: 0;
+  background: #eee; }
 
 .trk-top-home .trk-banner-fire {
   margin-top: 0;

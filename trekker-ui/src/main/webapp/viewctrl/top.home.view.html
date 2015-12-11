@@ -1,10 +1,16 @@
 <div layout="column" layout-margin class="trk-top-home">
-  <h1 class="md-display-1">{{ vm.orgRepo }}</h1>
+  <header layout="row">
+    <h1 class="md-display-1" flex>
+      <a ng-href="{{  }}">{{ vm.orgRepo }}</a>
+    </h1>
+    <md-checkbox md-no-ink ng-model="vm.prefs.alwaysRefresh">always refresh?</md-checkbox>
+  </header>
 
-  <div class="md-whiteframe-z2">
+  <section class="md-whiteframe-z2" ng-show="vm.fireTasks.length">
     <h2 layout-padding class="md-title trk-banner-fire">Fire</h2>
 
     <div layout-margin>
+      <!-- cards, some info -->
       <div layout="row" ng-repeat="task in vm.fireTasks">
         <img class="trk-img-avatar" ng-src="{{ task.user.avatar_url }}"/>
 
@@ -16,5 +22,22 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <div layout="row">
+    <section class="md-whiteframe-z1" flex ng-show="vm.myTasks.length">
+      <h2 layout-padding class="md-title trk-banner">Mine</h2>
+
+      <!-- cards, some info -->
+      <div layout-margin>
+
+      </div>
+    </section>
+
+    <section class="md-whiteframe-z1" flex ng-show="vm.watchTasks.length">
+      <h2 layout-padding class="md-title trk-banner">Watch</h2>
+
+      <!-- lines, minimal info -->
+    </section>
   </div>
 </div>

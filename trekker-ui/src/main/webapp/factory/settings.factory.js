@@ -26,7 +26,20 @@ function Settings(Exit, localStorageService, $rootScope) {
          * Repositories activated with Trekker. Keys are GitHub full names such as "organization/repository"
          * @type {Object<String, Boolean>}
          */
-        repos: {}
+        repos: {},
+
+        /**
+         * User preferences organized by view.
+         */
+        viewPrefs: {
+
+          top_home: {
+            /**
+             * When true always requests fresh data from GitHub on certain widgets.
+             */
+            alwaysRefresh: false
+          }
+        }
 
       };
 
