@@ -1,4 +1,4 @@
-<div layout="column" layout-margin>
+<div layout="column" layout-margin class="trk-top-settings">
   <h1 class="md-display-1">Settings</h1>
 
   <h2 class="md-display-1">
@@ -48,7 +48,7 @@
   <div layout="column" class="trk-repos md-whiteframe-z1"
        ng-repeat="(ownerName, repos) in vm.reposByOwner">
     <div layout="row" layout-padding layout-align="start center" class="trk-owner">
-      <img ng-src="{{ repos[0].owner.avatar_url }}"/>
+      <img class="trk-img-avatar" ng-src="{{ repos[0].owner.avatar_url }}"/>
 
       <div layout="row">
         <md-tooltip md-direction="top">Open user's GitHub</md-tooltip>

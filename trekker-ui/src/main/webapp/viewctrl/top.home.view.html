@@ -1,1 +1,20 @@
-Yisss
+<div layout="column" layout-margin class="trk-top-home">
+  <h1 class="md-display-1">{{ vm.orgRepo }}</h1>
+
+  <div class="md-whiteframe-z2">
+    <h2 layout-padding class="md-title trk-banner-fire">Fire</h2>
+
+    <div layout-margin>
+      <div layout="row" ng-repeat="task in vm.fireTasks">
+        <img class="trk-img-avatar" ng-src="{{ task.user.avatar_url }}"/>
+
+        <div layout="column">
+          <span layout="row">
+            <a ng-href="{{ task.html_url }}" target="_blank">#{{ task.number }}</a>
+            {{ task.title }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

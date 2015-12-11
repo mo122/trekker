@@ -16,21 +16,21 @@ function GitHub(Const, Auth, $http, $q) {
   function scopes() {
     var options = {};
     authify(options);
-    return $http.get(URI(Const.GH_API), options)
+    return $http.get(Const.GH_API, options)
         .then(function (response) {
           return _.filter(response.headers('X-OAuth-Scopes').split(', '));
         });
   }
 
   /**
-   * @param {String} path
+   * @param {String|URI} uri
    * @param {{}} [options]
    * @returns {Promise<*>}
    */
-  function get(path, options) {
-    authify(options || {});
+  function get(uri, options) {
+    options = authify(options || {});
 
-    return $http.get(URI(Const.GH_API).path(path), options)
+    return $http.get(addressUri(uri), options)
         .then(data, handleGeneralErrors);
   }
 
@@ -38,16 +38,16 @@ function GitHub(Const, Auth, $http, $q) {
    * For paged resources, those that return a Link header, retrieves all pages before returning a single concatenated
    * response.
    *
-   * @param {String} path http request path
+   * @param {String|URI} uri http request path
    * @param {{}} [options] http request options
    * @param {Function} [aggregator] function(currentAggregate, pageResponse) {returns nextAggregate}
    * @returns {Promise<*[]>}
    */
-  function getAll(path, options, aggregator) {
+  function getAll(uri, options, aggregator) {
     options = authify(options || {});
     aggregator = aggregator || function (aggregate, data) {return aggregate.concat(data)};
     var deferred = $q.defer(),
-        href = URI(Const.GH_API).path(path),
+        href = addressUri(uri),
         aggregation = [];
 
     nextPage();
@@ -108,6 +108,10 @@ function GitHub(Const, Auth, $http, $q) {
     options.headers = options.headers || {};
     options.headers['Authorization'] = 'token ' + Auth.ghAccessToken;
     return options;
+  }
+
+  function addressUri(uri) {
+    return URI(uri).scheme(Const.GH_API_URI.scheme()).host(Const.GH_API_URI.host());
   }
 
   function data(response) {

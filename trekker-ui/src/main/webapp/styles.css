@@ -7916,10 +7916,17 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 8px;
   margin-bottom: 8px; }
 
-.trk-toggle-tiles {
+.trk-top-home .trk-banner-fire {
+  margin-top: 0;
+  background: red; }
+
+.trk-top-home .trk-img-avatar {
+  height: 40px; }
+
+.trk-top-settings .trk-toggle-tiles {
   margin-bottom: 8px;
   margin-right: 8px; }
-  .trk-toggle-tiles .trk-tile {
+  .trk-top-settings .trk-toggle-tiles .trk-tile {
     display: inline-block;
     margin-top: 8px;
     margin-left: 8px;
@@ -7927,42 +7934,42 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #eee;
     transition: background-color 0.2s;
     cursor: pointer; }
-    .trk-toggle-tiles .trk-tile:hover {
+    .trk-top-settings .trk-toggle-tiles .trk-tile:hover {
       background-color: #ddd; }
-    .trk-toggle-tiles .trk-tile.trk-active {
+    .trk-top-settings .trk-toggle-tiles .trk-tile.trk-active {
       background-color: #b9f6ca; }
-      .trk-toggle-tiles .trk-tile.trk-active:hover {
+      .trk-top-settings .trk-toggle-tiles .trk-tile.trk-active:hover {
         background-color: #b2ecc2; }
 
-.trk-scopes .trk-tile {
+.trk-top-settings .trk-scopes .trk-tile {
   height: 80px; }
 
-.trk-scopes .trk-add-icon, .trk-scopes .trk-remove-icon {
+.trk-top-settings .trk-scopes .trk-add-icon, .trk-top-settings .trk-scopes .trk-remove-icon {
   display: none; }
 
-.trk-scopes .trk-add, .trk-scopes .trk-add:hover {
+.trk-top-settings .trk-scopes .trk-add, .trk-top-settings .trk-scopes .trk-add:hover {
   background-color: #e6f6ed; }
 
-.trk-scopes .trk-add .trk-add-icon {
+.trk-top-settings .trk-scopes .trk-add .trk-add-icon {
   display: inline-block; }
 
-.trk-scopes .trk-remove, .trk-scopes .trk-remove:hover {
+.trk-top-settings .trk-scopes .trk-remove, .trk-top-settings .trk-scopes .trk-remove:hover {
   background-color: #f6e2b0; }
 
-.trk-scopes .trk-remove .trk-remove-icon {
+.trk-top-settings .trk-scopes .trk-remove .trk-remove-icon {
   display: inline-block; }
 
-.trk-repos img {
+.trk-top-settings .trk-repos .trk-img-avatar {
   height: 50px; }
 
-.trk-repos .trk-owner {
+.trk-top-settings .trk-repos .trk-owner {
   background-color: #eee; }
 
-.trk-repos .trk-chop {
+.trk-top-settings .trk-repos .trk-chop {
   padding-left: 8px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow-x: hidden; }
 
-.trk-repos .trk-icon-public {
+.trk-top-settings .trk-repos .trk-icon-public {
   color: darkgray; }
