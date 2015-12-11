@@ -23,12 +23,12 @@ function TopHomeCtrl(Tasks, Users, Repos, Settings, $q) {
     vm.user = results[0];
     vm.repo = results[1];
 
-    search(sprintf('repo:%s is:open label:fire', vm.repo.full_name), 'created', 'asc')
+    search(sprintf('repo:%s is:open is:issue label:fire', vm.repo.full_name), 'created', 'asc')
         .then(bind(vm, 'fireTasks', 'items'));
-    search(sprintf('repo:%s is:open assignee:%s', vm.repo.full_name, vm.user.login),
+    search(sprintf('repo:%s is:open is:issue assignee:%s', vm.repo.full_name, vm.user.login),
         vm.myTasksOrder.sort, vm.myTasksOrder.order)
         .then(bind(vm, 'myTasks', 'items'));
-    search(sprintf('repo:%s is:open involves:%s', vm.repo.full_name, vm.user.login),
+    search(sprintf('repo:%s is:open is:issue involves:%s', vm.repo.full_name, vm.user.login),
         vm.watchTasksOrder.sort, vm.watchTasksOrder.order)
         .then(bind(vm, 'watchTasks', 'items'));
   });
