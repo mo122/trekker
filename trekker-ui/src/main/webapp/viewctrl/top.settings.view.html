@@ -10,7 +10,9 @@
     <div class="trk-toggle-tiles">
       <div layout-padding layout="column" class="trk-tile trk-active">
         <div class="md-subhead">default</div>
-        <small>The default GitHub scope can see public repos and is always active.</small>
+        <div>
+          <small>The default GitHub scope can see public repos and is always active.</small>
+        </div>
       </div>
       <div layout-padding layout="column" class="trk-tile"
            ng-class="[ vm.scopeDiffClass('repo') ]"
@@ -31,7 +33,9 @@
             </md-tooltip>
           </div>
         </div>
-        <small>This GitHub scope is required to interact with private repositories.</small>
+        <div>
+          <small>This GitHub scope is required to interact with private repositories.</small>
+        </div>
       </div>
     </div>
     <div layout-margin ng-hide="vm.desiredScopeDiffersFromAuth()">
@@ -52,7 +56,7 @@
 
       <div layout="row">
         <md-tooltip md-direction="top">Open user's GitHub</md-tooltip>
-        <a layout-margin class="md-headline" target="_blank"
+        <a layout-margin class="md-headline"
            ng-href="{{ repos[0].owner.html_url }}">{{ ownerName }}</a>
       </div>
 
@@ -80,7 +84,7 @@
 
           <div layout="row">
             <md-tooltip md-direction="top">Open repo on GitHub</md-tooltip>
-            <a class="material-icons" target="_blank"
+            <a class="material-icons"
                ng-click="$event.stopPropagation()"
                ng-href="{{ repo.html_url }}">open_in_new</a>
           </div>

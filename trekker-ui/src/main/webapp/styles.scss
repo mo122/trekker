@@ -55,17 +55,24 @@ md-list {
     background: $bgMild;
   }
   .trk-banner-fire {
-    margin-top: 0;
+    @extend .trk-banner;
     background: red;
   }
 
-  .trk-tasks-cards {
+  .trk-task-cards {
+
+    .trk-task-card {
+
+    }
+
     .trk-img-avatar {
       height: 40px;
+      width: auto;
+      display: block;
     }
   }
 
-  .trk-tasks-lines {
+  .trk-task-lines {
     .trk-img-avatar {
       height: 25px;
     }
@@ -105,7 +112,7 @@ md-list {
 
   .trk-scopes {
     .trk-tile {
-      height: 80px;
+      height: 110px;
     }
 
     // Hide by default.
