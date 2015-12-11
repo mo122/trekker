@@ -34,7 +34,9 @@ h1, h2, h3, h4, h5, h6 {
 
 section {
   margin-bottom: $marginSpace;
-  margin-right: $marginSpace;
+  &:not(:last-of-type) {
+    margin-right: $marginSpace;
+  }
 }
 
 .trk-top-home {

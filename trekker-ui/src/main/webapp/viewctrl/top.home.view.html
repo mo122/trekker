@@ -25,7 +25,7 @@
   </section>
 
   <div layout="row">
-    <section class="md-whiteframe-z1" flex ng-show="vm.myTasks.length">
+    <section class="md-whiteframe-z1" flex="50%" ng-show="vm.myTasks.length">
       <h2 layout-padding class="md-title trk-banner">Mine</h2>
 
       <!-- cards, some info -->
@@ -34,10 +34,16 @@
       </div>
     </section>
 
-    <section class="md-whiteframe-z1" flex ng-show="vm.watchTasks.length">
+    <section class="md-whiteframe-z1" flex="50%" ng-show="vm.watchTasks.length">
       <h2 layout-padding class="md-title trk-banner">Watch</h2>
 
       <!-- lines, minimal info -->
+      <md-list>
+        <md-list-item ng-repeat="task in [vm.watchTasks[0]]">
+          <a ng-href="{{ task.html_url }}" target="_blank">#{{ task.number }}</a>
+          <pre>{{ task | json }}</pre>
+        </md-list-item>
+      </md-list>
     </section>
   </div>
 </div>

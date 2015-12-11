@@ -7919,8 +7919,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 8px; }
 
 section {
-  margin-bottom: 16px;
-  margin-right: 16px; }
+  margin-bottom: 16px; }
+  section:not(:last-of-type) {
+    margin-right: 16px; }
 
 .trk-top-home .trk-banner {
   margin-top: 0;
