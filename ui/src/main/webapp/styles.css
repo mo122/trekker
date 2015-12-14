@@ -10732,6 +10732,9 @@ md-tooltip {
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased; }
 
+.trk-fuuu {
+  background-color: red !important; }
+
 a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.87); }
@@ -10752,9 +10755,22 @@ section {
   section:not(:last-of-type) {
     margin-right: 16px; }
 
+md-checkbox {
+  margin-bottom: 0; }
+
 md-list {
   padding-top: 0;
   padding-bottom: 0; }
+
+md-input-container {
+  margin-top: 0;
+  margin-bottom: 0; }
+
+.trk-icon-public {
+  color: darkgray; }
+
+.trk-top-home .md-title md-input-container {
+  margin-top: -8px; }
 
 .trk-top-home .trk-banner, .trk-top-home .trk-banner-fire {
   margin-top: 0;
@@ -10771,6 +10787,9 @@ md-list {
 
 .trk-top-home .trk-task-lines .trk-img-avatar {
   height: 25px; }
+
+.trk-header-select .md-text {
+  font-size: 20px; }
 
 .trk-top-settings .trk-toggle-tiles {
   margin-bottom: 8px;
@@ -10819,6 +10838,3 @@ md-list {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow-x: hidden; }
-
-.trk-top-settings .trk-repos .trk-icon-public {
-  color: darkgray; }

@@ -37,7 +37,12 @@ function Settings(Exit, localStorageService, $rootScope) {
             /**
              * When true always requests fresh data from GitHub on certain widgets.
              */
-            alwaysRefresh: false
+            alwaysRefresh: false,
+
+            /**
+             * The last selected repo "org/repo", if any.
+             */
+            lastSelectedRepo: null
           }
         }
 

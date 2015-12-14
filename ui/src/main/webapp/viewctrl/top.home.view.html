@@ -1,9 +1,27 @@
 <div layout="column" layout-margin class="trk-top-home">
   <header layout="row">
-    <h1 class="md-title" flex layout="row" layout-align="start center">
-      <i class="material-icons">{{ vm.repo.private ? 'lock_outline' : 'lock_open' }}</i>
-      <a ng-href="{{ vm.repo.html_url }}">{{ vm.repo.full_name }}</a>
-    </h1>
+
+    <div class="md-title" flex layout="row" layout-align="start center">
+      <a class="material-icons" ng-href="{{ vm.repo.html_url }}/issues">open_in_new</a>
+      &nbsp;
+      <md-input-container>
+        <md-select md-container-class="trk-header-select"
+                   ng-model="vm.repo" ng-change="vm.selectedRepoChanged()"
+                   aria-label="organization slash repository">
+          <md-option ng-value="repo" ng-repeat="repo in vm.repos">{{ repo.full_name }}</md-option>
+        </md-select>
+      </md-input-container>
+      &nbsp;
+      <span layout="row" ng-show="vm.repo.private">
+        <md-tooltip md-direction="top">Private repo</md-tooltip>
+        <i class="material-icons trk-icon-private">lock_outline</i>
+      </span>
+      <span layout="row" ng-hide="vm.repo.private">
+        <md-tooltip md-direction="top">Public repo</md-tooltip>
+        <i class="material-icons trk-icon-public">lock_open</i>
+      </span>
+    </div>
+
     <md-checkbox layout="row" layout-align="start center"
                  md-no-ink ng-model="vm.prefs.alwaysRefresh">
       always refresh?
@@ -20,7 +38,7 @@
         <a flex ng-href="{{ task.html_url }}">#{{ task.number }}
           <span class="trk-textish">{{ task.title }}</span></a>
 
-        <div>
+        <div layout="row">
           <img class="trk-img-avatar" ng-src="{{ task.assignee.avatar_url }}"/>
         </div>
       </div>
@@ -28,7 +46,7 @@
   </section>
 
   <div layout="row">
-    <section class="md-whiteframe-z1 trk-task-cards" flex="50%" ng-show="vm.myTasks.length">
+    <section class="md-whiteframe-z1 trk-task-cards" flex="50%">
       <h2 layout-padding class="md-title trk-banner">Mine</h2>
 
       <!-- cards, some info, no self -->
@@ -41,8 +59,8 @@
         </md-list-item>
     </section>
 
-    <section class="md-whiteframe-z1 trk-task-lines" flex="50%" ng-show="vm.watchTasks.length">
-      <h2 layout-padding class="md-title trk-banner">Watch</h2>
+    <section class="md-whiteframe-z1 trk-task-lines" flex="50%">
+      <h2 layout-padding class="md-title trk-banner">Involved</h2>
 
       <!-- lines, minimal info -->
       <md-list>

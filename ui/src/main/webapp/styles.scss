@@ -13,6 +13,10 @@ $bgToActive: #e6f6ed;
 $bgFromActive: #f6e2b0;
 $txtBlackish: rgba(0, 0, 0, 0.87); // from angular-material
 
+.trk-fuuu {
+  background-color: red !important;
+}
+
 a {
   text-decoration: none;
   color: $txtBlackish;
@@ -43,12 +47,32 @@ section {
   }
 }
 
+md-checkbox {
+  margin-bottom: 0;
+}
+
 md-list {
   padding-top: 0;
   padding-bottom: 0;
 }
 
+md-input-container {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.trk-icon-public {
+  color: darkgray;
+}
+
+.trk-icon-private {
+}
+
 .trk-top-home {
+  .md-title md-input-container {
+    margin-top: -8px; // Repo select alignment looks weird without it
+  }
+
   .trk-banner {
     margin-top: 0;
     margin-bottom: 0;
@@ -76,6 +100,13 @@ md-list {
     .trk-img-avatar {
       height: 25px;
     }
+  }
+}
+
+// This need to be top level because md-select is not a child element.
+.trk-header-select {
+  .md-text {
+    font-size: 20px; // imitates .md-title
   }
 }
 
@@ -153,12 +184,6 @@ md-list {
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow-x: hidden;
-    }
-
-    .trk-icon-public {
-      color: darkgray;
-    }
-    .trk-icon-private {
     }
   }
 

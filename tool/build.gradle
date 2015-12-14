@@ -1,0 +1,8 @@
+dependencies {
+    compile 'com.amazonaws:aws-java-sdk-s3:1.10.40'
+}
+
+task publishStatic(type: Exec) {
+    commandLine 'aws', '--profile', 'dirkraft', 's3', 'sync', '--cache-control', 'max-age=0, no-cache',
+            'ui/src/main/webapp', 's3://dirkraft.trekker'
+}

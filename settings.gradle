@@ -1,3 +1,4 @@
 rootProject.name = 'trekker'
-include 'trekker-core',
-        'trekker-ui'
+include 'core',
+        'ui',
+        'tool'
