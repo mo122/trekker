@@ -23,6 +23,16 @@ function TrekkerRouteCfg($urlRouterProvider, $stateProvider) {
           }
         }
       })
+      .state('top_help', {
+        url: '/help',
+        views: {
+          top: {
+            controller: 'TopHelpCtrl',
+            controllerAs: 'vm',
+            templateUrl: 'viewctrl/top.help.view.html'
+          }
+        }
+      })
       .state('top_home', {
         url: '/home',
         views: {
