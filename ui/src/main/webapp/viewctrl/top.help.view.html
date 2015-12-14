@@ -1,3 +1,55 @@
 <div layout="column" layout-margin class="trk-top-help">
   <h1 class="md-display-1">Help</h1>
+
+  <p>
+    Tasks follow <strong>treks</strong>. Treks are made up of steps. The steps
+    have logical ordering so that we can quickly reason about trek progress.
+
+  <p>
+    For maximum actionability all tasks follow exactly one trek. Tasks may jump
+    treks where it is convenient to co-opt them, e.g. a question reveals a subtle bug
+    and changes from the question trek to the bug trek.
+
+  <p>
+    The following treks are defined.
+
+  <dl>
+    <dt ng-repeat-start="trek in vm.treks">
+      {{ trek.name }}
+    <dd ng-repeat="step in trek.steps" ng-repeat-end>
+      {{ step }}
+  </dl>
+
+  <p>
+    Tasks can be flagged. Flags impart upon a task some notion which supersedes the trek,
+    but we still keep the trek to lead that task to its conclusion.
+
+  <p>
+    Only a single flag may be present on a task. Additional flags may be informative but
+    become noisy with respect to task tracking. That goal of Trekker is to
+    clarify tracking tasks, not to maintain meticulous task tracking metadata.
+    I have found that data encoded in the form of structured flags
+    usually feed some quasi-OCD tendency and rarely contribute the primary goal of a task
+    tracking system: To get <em>lots of</em> things done.
+
+  <p>
+    The following flags are defined.
+
+  <dl>
+    <dt ng-repeat-start="flag in vm.flags">
+      {{ flag.name }}
+    <dd ng-repeat-end>{{ flag.description }}
+
+  </dl>
+
+  <p>
+    Finally, tasks may be related to a particular heroic effort, which I have chosen to call
+    an <strong>Odyssey</strong>.
+
+  <p>
+    These benefit us by grouping related tasks together, which
+    when constituent tasks are completed, celebrates a significant achievement. If a
+    <em>milestone</em> is the completion of a bundle of tasks within a time boundary,
+    then odysseys are a bundle of goals within a semantic boundary, such as a complex feature,
+    or a concerted effort to pay off a bundle of operational debts.
 </div>
