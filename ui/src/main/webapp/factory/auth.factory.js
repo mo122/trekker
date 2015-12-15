@@ -7,7 +7,7 @@ function Auth(Settings, Assert, Error, localStorageService, $state) {
 
   Auth.trekkerAuthServer = 'localhost' == window.location.hostname ?
       'http://localhost:4567' :
-      window.location.protocol + '//trekker-support.dirkraft.com';
+      window.location.protocol + '//trekker-auth.dirkraft.com';
   Auth.ghAccessToken = localStorageService.get('auth.ghAccessToken');
 
   Auth.isAuthd = isAuthd;

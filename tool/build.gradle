@@ -4,5 +4,6 @@ dependencies {
 
 task publishStatic(type: Exec) {
     commandLine 'aws', '--profile', 'dirkraft', 's3', 'sync', '--cache-control', 'max-age=0, no-cache',
-            'ui/src/main/webapp', 's3://dirkraft.trekker'
+            rootProject.projectDir.absolutePath + '/ui/src/main/webapp', 's3://dirkraft.trekker'
 }
+
