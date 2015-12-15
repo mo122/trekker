@@ -1,55 +1,69 @@
 <div layout="column" layout-margin class="trk-top-help">
-  <h1 class="md-display-1">Help</h1>
+  <h2 class="md-title">About: Treks</h2>
 
   <p>
-    Tasks follow <strong>treks</strong>. Treks are made up of steps. The steps
+    Tasks follow treks. Treks are made up of steps. The steps
     have logical ordering so that we can quickly reason about trek progress.
 
   <p>
     For maximum actionability all tasks follow exactly one trek. Tasks may jump
     treks where it is convenient to co-opt them, e.g. a question reveals a subtle bug
-    and changes from the question trek to the bug trek.
+    and changes from the question trek to the bug trek. A task not classifiable under
+    a single trek may indicate a frivolous or immature task that should either be
+    rewritten or removed (closed).
 
   <p>
     The following treks are defined.
 
-  <dl>
-    <dt ng-repeat-start="trek in vm.treks">
-      {{ trek.name }}
-    <dd ng-repeat="step in trek.steps" ng-repeat-end>
-      {{ step }}
-  </dl>
+  <div class="md-whiteframe-z1" ng-repeat="trek in vm.treks">
+    <div layout="column" layout-margin>
+      <h3>
+        {{ trek.name }}
+        <small class="md-subhead">{{ trek.description }}</small>
+      </h3>
+      <md-chips ng-model="trek.steps">
+        <md-chip-template>{{ $index }}:{{ $chip }}</md-chip-template>
+      </md-chips>
+    </div>
+  </div>
+
+  <h2 class="md-title">About: Flags</h2>
 
   <p>
-    Tasks can be flagged. Flags impart upon a task some notion which supersedes the trek,
-    but we still keep the trek to lead that task to its conclusion.
+    Tasks can be flagged. Flags impart upon a task some notion which supersedes the forefront
+    thinking about the trek itself. "Something about this task is more important than the kind
+    of task that it is (its trek)."
 
   <p>
     Only a single flag may be present on a task. Additional flags may be informative but
-    become noisy with respect to task tracking. That goal of Trekker is to
-    clarify tracking tasks, not to maintain meticulous task tracking metadata.
-    I have found that data encoded in the form of structured flags
-    usually feed some quasi-OCD tendency and rarely contribute the primary goal of a task
-    tracking system: To get <em>lots of</em> things done.
+    become noisy with respect to task tracking. Trekker seeks to maximize the actionability
+    or liquidity of tasks, not to maintain meticulous task tracking metadata.
+    Data encoded into stringent flags often appeases some quasi-OCD tendency and
+    contributes little to the primary goal of Trekker.
 
   <p>
     The following flags are defined.
 
-  <dl>
-    <dt ng-repeat-start="flag in vm.flags">
-      {{ flag.name }}
-    <dd ng-repeat-end>{{ flag.description }}
+  <div layout="column" class="md-whiteframe-z1" ng-repeat="flag in vm.flags">
+    <div layout-margin>
+      <h3>
+        {{ flag.name }}
+        <small class="md-subhead">{{ flag.description }}</small>
+      </h3>
+    </div>
+  </div>
 
-  </dl>
+  <h2 class="md-title">About: Themes</h2>
 
   <p>
-    Finally, tasks may be related to a particular heroic effort, which I have chosen to call
-    an <strong>Odyssey</strong>.
+    A pile of related tasks may be bundled under a <strong>Theme</strong>.
 
   <p>
-    These benefit us by grouping related tasks together, which
-    when constituent tasks are completed, celebrates a significant achievement. If a
-    <em>milestone</em> is the completion of a bundle of tasks within a time boundary,
-    then odysseys are a bundle of goals within a semantic boundary, such as a complex feature,
-    or a concerted effort to pay off a bundle of operational debts.
+    Themes can be used to reduce intimidating task counts, to capture multiple parts of
+    a larger effort in dividual tasks, and can encourage
+    multiple team members to work together towards a common goal.
+    If a <em>milestone</em> bundles tasks within a time boundary,
+    then a theme bundles goals within a semantic boundary, such as a complex feature,
+    or a concerted effort to pay off a bundle of debts.
+
 </div>

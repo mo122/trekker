@@ -11,11 +11,9 @@ $bgActive: #b9f6ca;
 $bgActiveHover: #b2ecc2;
 $bgToActive: #e6f6ed;
 $bgFromActive: #f6e2b0;
+$bgEmphasis: #d9eaed;
+$txtGray: #666;
 $txtBlackish: rgba(0, 0, 0, 0.87); // from angular-material
-
-.trk-fuuu {
-  background-color: red !important;
-}
 
 a {
   text-decoration: none;
@@ -68,6 +66,28 @@ md-input-container {
 .trk-icon-private {
 }
 
+.trk-top-help {
+
+  h2:not(:first-of-type) {
+    margin-top: $marginSpace;
+  }
+
+  .md-subhead {
+    margin-left: $marginSpace;
+  }
+
+  .md-chip:not(.md-focused) {
+    &:first-of-type, &:last-of-type {
+      background-color: $bgEmphasis;
+    }
+  }
+
+  .md-whiteframe-z1 {
+    margin-bottom: $marginBase;
+  }
+
+}
+
 .trk-top-home {
   .md-title md-input-container {
     margin-top: -8px; // Repo select alignment looks weird without it
@@ -105,12 +125,17 @@ md-input-container {
 
 // This need to be top level because md-select is not a child element.
 .trk-header-select {
+  margin-left: 0.5px;
   .md-text {
-    font-size: 20px; // imitates .md-title
+    @include md-title
   }
 }
 
 .trk-top-settings {
+
+  small.md-subhead {
+    color: $txtGray;
+  }
 
   .trk-toggle-tiles {
     margin-bottom: $marginBase;

@@ -10732,9 +10732,6 @@ md-tooltip {
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased; }
 
-.trk-fuuu {
-  background-color: red !important; }
-
 a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.87); }
@@ -10769,6 +10766,18 @@ md-input-container {
 .trk-icon-public {
   color: darkgray; }
 
+.trk-top-help h2:not(:first-of-type) {
+  margin-top: 16px; }
+
+.trk-top-help .md-subhead {
+  margin-left: 16px; }
+
+.trk-top-help .md-chip:not(.md-focused):first-of-type, .trk-top-help .md-chip:not(.md-focused):last-of-type {
+  background-color: #d9eaed; }
+
+.trk-top-help .md-whiteframe-z1 {
+  margin-bottom: 8px; }
+
 .trk-top-home .md-title md-input-container {
   margin-top: -8px; }
 
@@ -10788,8 +10797,15 @@ md-input-container {
 .trk-top-home .trk-task-lines .trk-img-avatar {
   height: 25px; }
 
-.trk-header-select .md-text {
-  font-size: 20px; }
+.trk-header-select {
+  margin-left: 0.5px; }
+  .trk-header-select .md-text {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.005em; }
+
+.trk-top-settings small.md-subhead {
+  color: #666; }
 
 .trk-top-settings .trk-toggle-tiles {
   margin-bottom: 8px;
