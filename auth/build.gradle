@@ -1,0 +1,22 @@
+apply plugin: 'application'
+
+mainClassName = 'com.github.dirkraft.trekker.auth.OAuthDirector'
+
+dependencies {
+
+    // Client
+    compile 'org.apache.httpcomponents:httpclient:4.5.1'
+
+    // Utility
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.4'
+    compile 'com.google.guava:guava:18.0'
+    compile 'joda-time:joda-time:2.9.1'
+
+    // Web
+    compile 'com.sparkjava:spark-core:2.3'
+
+    // Logging
+    compile 'org.slf4j:slf4j-api:1.7.13'
+    compile 'ch.qos.logback:logback-core:1.1.3'
+
+}

@@ -1,4 +1,5 @@
 rootProject.name = 'trekker'
-include 'core',
+include 'auth',
+        'core',
         'ui',
         'tool'

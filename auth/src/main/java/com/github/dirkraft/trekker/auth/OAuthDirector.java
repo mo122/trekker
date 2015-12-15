@@ -15,6 +15,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.joda.time.DateTime;
 import spark.Request;
+import spark.Spark;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
@@ -58,7 +59,7 @@ public class OAuthDirector {
 
   public static void main(String[] args) {
 
-    get("/auth", (request, response) -> {
+    Spark.get("/auth", (request, response) -> {
 
       Optional<String> missing = Requests.missingParams(request, "flowId", "flowStartTime", "redirectAuthCodeTo");
       if (missing.isPresent()) {
@@ -87,7 +88,7 @@ public class OAuthDirector {
       return null;
     }, MAPPER::writeValueAsString);
 
-    get("/auth-callback", (request, response) -> {
+    Spark.get("/auth-callback", (request, response) -> {
 
       Optional<String> missing = Requests.missingParams(request,
         "flowId", "flowStartTime", "originalState", "ghCode", "redirectAccessTokenTo");
